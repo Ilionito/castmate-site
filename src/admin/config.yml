@@ -199,13 +199,9 @@ collections:
           - name: items
             label: "Questions / Réponses"
             widget: list
-            # Liste indexée — figée à 8 items.
-            # Le runtime JS de Framer truncate le DOM à 8 entrées même si la
-            # boucle Eleventy en rend davantage (testé : le 9ᵉ item est rendu
-            # côté SSR mais supprimé à l'hydration). Ajouter via CMS demande
-            # une autre approche (réécriture sans le bundle Framer).
-            min: 8
-            max: 8
+            # Accordéon natif <details> (détaché du runtime Framer) — le
+            # nombre d'items peut varier librement.
+            min: 1
             summary: "{{fields.question}}"
             fields:
               - { name: question, label: "Question", widget: string }
