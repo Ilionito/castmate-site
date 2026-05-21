@@ -5,16 +5,17 @@
 .site-header__logo img{height:28px;width:auto;display:block;filter:brightness(0) invert(1)}
 .site-header__nav{justify-self:center;display:flex;gap:24px}
 .site-header__nav a{color:#fff;text-decoration:none;font-size:15px}
-.site-header__cta{justify-self:end;display:inline-flex;align-items:center;gap:10px;background:#081131;color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:6px 6px 6px 16px;font-size:15px;font-weight:500;text-decoration:none;box-shadow:inset 0 .5px 0 #878787,inset 0 2px 5.85px rgba(255,255,255,.2)}
-.site-header__cta .ico{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#081131;box-shadow:inset 0 -.8px .8px rgba(255,255,255,.14),inset 0 1px .8px rgba(255,255,255,.29)}
 .site-header__burger{display:none;justify-self:end;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
 .site-header__burger span{width:24px;height:2px;background:#fff;border-radius:2px}
 .site-header.is-scrolled{box-shadow:0 6px 20px rgba(0,0,0,.25)}
+/* Le CTA du header réutilise le composant Framer "Link - Black Button" : pas de
+   style override, seulement le positionnement dans la 3e colonne du grid. */
+.site-header__inner > .framer-BcHjm{justify-self:end}
 /* DRAWER : caché partout par défaut ; affiché seulement quand .is-open en mobile */
 .site-drawer{display:none}
 @media(max-width:860px){
   .site-header__inner{grid-template-columns:1fr auto}
-  .site-header__nav,.site-header__cta{display:none}
+  .site-header__nav,.site-header__inner > .framer-BcHjm{display:none}
   .site-header__burger{display:flex}
   .site-header.is-open .site-drawer{display:flex;position:fixed;top:96px;left:0;right:0;background:#0d1231;flex-direction:column;gap:18px;padding:24px 30px 32px}
   .site-header.is-open .site-drawer a{color:#fff;text-decoration:none}
@@ -27,9 +28,7 @@
     <nav class="site-header__nav" aria-label="Navigation principale">
       {% for item in nav.links %}<a href="{{ item.url }}">{{ item.label }}</a>{% endfor %}
     </nav>
-    <a class="site-header__cta" href="{{ nav.ctaUrl }}">{{ nav.ctaLabel }}
-      <i class="ico"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
-    </a>
+    <a class="framer-BcHjm framer-vKPZc framer-y6rgl framer-v-y6rgl framer-ptabo1" data-border="true" data-framer-name="Black Button" href="{{ nav.ctaUrl }}" style="--24qzme:16px;--border-bottom-width:1px;--border-color:rgba(255, 255, 255, 0.18);--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;background-color:var(--token-e87a9e53-9616-4ac1-a333-52b3ec0bae9e, rgb(80, 18, 2));border-bottom-left-radius:12px;border-bottom-right-radius:12px;border-top-left-radius:12px;border-top-right-radius:12px;box-shadow:inset 0px 0.5px 0px 0px var(--token-4edd532c-629d-46fd-b18b-ec00004834dd, rgb(135, 135, 135)), inset 0px 2px 5.85px 0px rgba(255, 255, 255, 0.2)"><div class="framer-1e1dp4m" data-framer-name="Title"><div class="framer-1r36vle" data-framer-name="Holder" data-highlight="true" data-framer-component-type="RichTextContainer" tabindex="0" style="--extracted-r6o4lv:var(--token-a5026c65-8ddb-4a17-a393-1692158bf079, rgb(255, 255, 255));--framer-link-text-color:rgb(0, 153, 255);--framer-link-text-decoration:underline;filter:blur(0px);-webkit-filter:blur(0px);opacity:1;transform:none"><p class="framer-text framer-styles-preset-1uq2p9u" data-styles-preset="wZyDG7x5K" style="--framer-text-alignment:center;--framer-text-color:var(--extracted-r6o4lv, var(--token-a5026c65-8ddb-4a17-a393-1692158bf079, rgb(255, 255, 255)))">{{ nav.ctaLabel }}</p></div><div class="framer-1y6kmu5" data-framer-component-type="RichTextContainer" style="--extracted-r6o4lv:var(--token-a5026c65-8ddb-4a17-a393-1692158bf079, rgb(255, 255, 255));--framer-link-text-color:rgb(0, 153, 255);--framer-link-text-decoration:underline;filter:blur(5px);-webkit-filter:blur(5px);opacity:0;transform:scale(0.8)"><p class="framer-text framer-styles-preset-1uq2p9u" data-styles-preset="wZyDG7x5K" style="--framer-text-alignment:center;--framer-text-color:var(--extracted-r6o4lv, var(--token-a5026c65-8ddb-4a17-a393-1692158bf079, rgb(255, 255, 255)))">{{ nav.ctaLabel }}</p></div></div><div class="framer-ydgjmi" data-framer-name="Icon Wrap" style="background-color:var(--token-e87a9e53-9616-4ac1-a333-52b3ec0bae9e, rgb(80, 18, 2));border-bottom-left-radius:8px;border-bottom-right-radius:8px;border-top-left-radius:8px;border-top-right-radius:8px;box-shadow:inset 0px -0.8px 0.8px 0px rgba(255, 255, 255, 0.14), inset 0px 1px 0.8px 0px rgba(255, 255, 255, 0.29)"><svg class="framer-eivmu framer-17o9gnp" role="presentation" viewBox="0 0 24 24" style="--1m6trwb:0;--21h8s6:rgb(255, 255, 255);--pgex8v:1.5"><use href="#3166100823"/></svg></div></a>
     <button class="site-header__burger" data-burger aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button>
   </div>
   <nav class="site-drawer" id="mobile-drawer" aria-label="Menu mobile">
