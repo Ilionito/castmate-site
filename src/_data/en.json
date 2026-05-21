@@ -1,0 +1,179 @@
+{
+  "meta": {
+    "title": "CastMate - All-in-one platform for your castings",
+    "description": "Simplify your castings with CastMate. An all-in-one platform to manage applications, auditions, and talent selection.",
+    "ogImage": "/assets/framerusercontent.com/assets/cWamKX3W1JUmEfsQxg5k0f6aJuE.png"
+  },
+  "nav": {
+    "logo": "/assets/framerusercontent.com/images/Ona7maQllaRfuCPseOGU1X70s.png",
+    "logoAlt": "CastMate",
+    "links": [
+      { "label": "Home", "url": "/en/" },
+      { "label": "Contact", "url": "/en/contact" }
+    ],
+    "ctaLabel": "Request a demo",
+    "ctaUrl": "/en/demo"
+  },
+  "hero": {
+    "backgroundImage": "/assets/framerusercontent.com/images/VLvdl88gVFQl8UvszZepGlq4tA.png",
+    "title": "Manage your castings on a single platform",
+    "description": "CastMate brings all your tools together in one platform, designed to simplify the coordination of your castings.",
+    "ctaLabel": "Contact us",
+    "ctaUrl": "/en/contact",
+    "pills": [
+      "Centralized applications",
+      "Streamlined organization",
+      "Smoother interviews",
+      "Faster decision-making"
+    ],
+    "image": "/assets/framerusercontent.com/images/Xsw6eHfenxEOQVBeZx9fboSx8g.png"
+  },
+  "steps": {
+    "title": "Create your casting<br class=\"framer-text\">in just a few minutes",
+    "subtitle": "Configure your project, customize your forms, and generate a ready-to-share application site.",
+    "items": [
+      { "title": "Create your casting campaign", "text": "Configure your project, customize your forms, and automatically generate a ready-to-share application site in just a few minutes." },
+      { "title": "Attract the right profiles", "text": "Connect your Meta Ads and Google Ads campaigns to automatically funnel applications into a single platform." },
+      { "title": "Centralize all your applications", "text": "Each application is structured, browsable, and shared in real time to simplify profile tracking and decision-making." },
+      { "title": "Select and schedule your auditions", "text": "Filter applications, build your shortlists, and organize interviews directly from CastMate." },
+      { "title": "Automate candidate communications", "text": "Invitations, confirmations, reminders, or follow-up emails: your messages are sent automatically at every stage of the casting." },
+      { "title": "Run your castings as a team", "text": "Share information, coordinate your teams, and track casting progress on a centralized platform." }
+    ]
+  },
+  "features": {
+    "title": "Built for casting<br class=\"framer-text\">teams",
+    "subtitle": "Every feature is designed to streamline casting organization on a daily basis.",
+    "items": [
+      { "title": "Casting calendar", "text": "Schedule your auditions, view availability, and track the progress of your sessions in real time.", "image": "/assets/framerusercontent.com/images/guVJ1lZ3oZaSDLjAeZqckvqWOi8.png" },
+      { "title": "Centralized applications", "text": "Access all profiles, media, conversations, and evaluations from one single platform.", "image": "/assets/framerusercontent.com/images/c0MSAc75KapaaYyRbqufYXPLB44.png" },
+      { "title": "Task automation", "text": "Automatically send your invitations, reminders, and follow-up emails at every stage of the casting.", "image": "/assets/framerusercontent.com/images/8Kw5TL2tG6PFHr2uJcC9UgbwCNg.png" },
+      { "title": "Custom forms", "text": "Adapt your questionnaires and selection criteria to the needs of each production.", "image": "/assets/framerusercontent.com/images/npx5DCQxnKbBo1PmF1ntoR5CpQ.png" }
+    ]
+  },
+  "security": {
+    "title": "Security and privacy<br class=\"framer-text\">at the heart of CastMate",
+    "intro": "European hosting, data protection, and infrastructure that meets the highest security standards.",
+    "cards": [
+      { "title": "European hosting", "text": "Your casting data and media are hosted in Europe on infrastructures compliant with security standards and GDPR.", "image": "/assets/framerusercontent.com/images/77nawJ6w80GurV4aKm0NR4rDXLc.png" },
+      { "title": "Secure platform", "text": "CastMate protects access, communications, and casting data through a secure infrastructure aligned with current standards.", "image": "/assets/framerusercontent.com/images/NXL2vxHiCqfxRWdN6zegDCZBp8.png" }
+    ]
+  },
+  "clarity": {
+    "title": "Manage with<br class=\"framer-text\">greater clarity",
+    "intro": "Access essential information in real time to track your castings and make decisions faster.",
+    "blocks": [
+      { "tag": "Tracking", "title": "Track your castings<br class=\"framer-text\">in real time", "text": "Visualize the progress of applications, auditions, and selections from a centralized dashboard.", "image": "/assets/framerusercontent.com/images/LcLv7ymIbkZMv2W4YMHxFzgvVNU.png" },
+      { "tag": "Decision", "title": "Make decisions<br class=\"framer-text\">faster", "text": "Compare profiles, share evaluations, and more easily identify the candidates best suited to your production.", "image": "/assets/framerusercontent.com/images/ppddy6ayHXJjdJC0W7qHJfsizIU.png" },
+      { "tag": "Flow", "title": "Work with peace of mind", "text": "All information, conversations, and applications are centralized on a single platform.", "image": "/assets/framerusercontent.com/images/d9NmG3IMst9baLcV0anEuKJB6s.png" }
+    ],
+    "video": "/assets/framerusercontent.com/assets/pMIZZtn49gMxQx4juAWCOCXMxo.mp4"
+  },
+  "teamCta": {
+    "title": "One platform to work as a team",
+    "text": "Applications, conversations, evaluations, and decisions: your entire team moves forward on a single platform built for audiovisual castings.",
+    "bullets": [
+      "A centralized platform",
+      "Team-shared decisions",
+      "Information accessible in real time"
+    ],
+    "ctaLabel": "Contact us",
+    "ctaUrl": "/en/contact"
+  },
+  "testimonials": {
+    "title": "Professionals share their experience",
+    "intro": "Discover how CastMate simplifies the daily work of casting professionals and audiovisual productions.",
+    "items": [
+      { "heading": "CastMate brings better visibility into castings and lets us manage scheduling with greater agility.", "quote": "Before and now, agenda management is night and day. We can quickly cancel or adjust slots based on the number of registrations.", "author": "Clément", "role": "Casting Director" },
+      { "heading": "CastMate centralizes all information and simplifies day-to-day tasks.", "quote": "Before, I had tons of tabs open just to complete a single task — now everything's in one tool. It's super practical to access an applicant's entire file in one place — their general knowledge test, their dossier — especially during interviews.", "author": "Benjamin", "role": "Web Casting Manager" }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Got questions?",
+    "subtitle": "Everything you need to know about CastMate, how it works, and managing your castings.",
+    "ctaLabel": "Contact us",
+    "ctaUrl": "/en/contact",
+    "items": [
+      { "question": "What is CastMate?", "answer": "CastMate is an all-in-one platform designed to centralize and simplify the management of audiovisual castings, from application to final selection." },
+      { "question": "Who is CastMate for?", "answer": "CastMate is built for production teams and casting directors who want to organize and optimize their castings." },
+      { "question": "Do I need technical skills to use CastMate?", "answer": "No, the platform is intuitive and designed for quick onboarding by teams." },
+      { "question": "Where is the data hosted?", "answer": "Data is hosted in Europe, in France and Germany, ensuring security and compliance with current standards." },
+      { "question": "Can multiple people work on the same casting?", "answer": "Yes. CastMate lets teams collaborate on a single platform with shared access to applications, evaluations, conversations, and schedules." },
+      { "question": "Does CastMate support remote auditions?", "answer": "Yes. CastMate integrates video-conferencing and audition-tracking features directly within the platform." },
+      { "question": "Can application forms be customized?", "answer": "Yes. Forms and questionnaires can be adapted to the needs of each production and each casting." },
+      { "question": "Does CastMate replace multiple tools?", "answer": "Yes. CastMate centralizes applications, communications, auditions, schedules, and casting tracking on a single platform." }
+    ]
+  },
+  "footer": {
+    "tagline": "The all-in-one platform for your castings.",
+    "linkedinUrl": "https://linkedin.com",
+    "ctaLabel": "Request a demo",
+    "ctaUrl": "/en/demo",
+    "legalLinks": [
+      { "label": "Legal notice", "url": "/en/legal/mentions-legales" },
+      { "label": "Our commitments", "url": "/en/legal/engagements" },
+      { "label": "Data protection policy", "url": "/en/legal/protection-donnees" },
+      { "label": "Terms of use", "url": "/en/legal/conditions-utilisation" }
+    ],
+    "companyName": "CastMate - BV TECH SAS",
+    "email": "contact@castmate.fr",
+    "altEmail": "contact@bvtech.fr",
+    "siren": "901 938 787",
+    "rcs": "Versailles B 901 938 787",
+    "copyright": "© 2025 CastMate - BV TECH SAS. All rights reserved."
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact - CastMate",
+      "description": "Contact CastMate to discover how our all-in-one platform can simplify the management of your castings."
+    },
+    "hero": {
+      "title": "Contact us",
+      "subtitle": "Got a question about CastMate?<br/>Write to us, we'll get back to you quickly."
+    },
+    "form": {
+      "endpoint": "https://formspree.io/f/mdajgeva",
+      "successRedirect": "/en/contact/#merci",
+      "successMessage": "Thank you, your message has been sent. We'll get back to you shortly.",
+      "nameLabel": "Full name",
+      "namePlaceholder": "Full name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Enter your email",
+      "phoneLabel": "Phone number",
+      "phonePlaceholder": "Enter your phone",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Write your message here",
+      "consentPrefix": "I accept the",
+      "consentLinkLabel": "terms of use",
+      "consentLinkUrl": "/en/legal/conditions-utilisation",
+      "submitLabel": "Send"
+    }
+  },
+  "demo": {
+    "meta": {
+      "title": "Demo - CastMate",
+      "description": "Request a demo of CastMate, the all-in-one platform for your castings."
+    },
+    "hero": {
+      "title": "Request a demo",
+      "subtitle": "Book a demonstration with our team. We'll walk you through the platform with a real use case."
+    },
+    "form": {
+      "endpoint": "https://formspree.io/f/xbdboogv",
+      "successRedirect": "/en/demo/#merci",
+      "successMessage": "Thank you, your demo request has been received. We'll get back to you shortly.",
+      "nameLabel": "Full name",
+      "namePlaceholder": "Full name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Enter your email",
+      "phoneLabel": "Phone number",
+      "phonePlaceholder": "Enter your phone",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Describe your needs",
+      "consentPrefix": "I accept the",
+      "consentLinkLabel": "terms of use",
+      "consentLinkUrl": "/en/legal/conditions-utilisation",
+      "submitLabel": "Send"
+    }
+  }
+}
