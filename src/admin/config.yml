@@ -192,8 +192,9 @@ collections:
         label: "FAQ"
         file: "src/_data/faq.json"
         fields:
+          - { name: eyebrow, label: "Étiquette (au-dessus du titre, ex. « FAQ »)", widget: string }
           - { name: title, label: "Titre de la section", widget: string }
-          - { name: intro, label: "Introduction", widget: text }
+          - { name: subtitle, label: "Sous-titre", widget: text }
           - { name: ctaLabel, label: "Bouton — libellé", widget: string }
           - { name: ctaUrl, label: "Bouton — lien", widget: string }
           - name: items
