@@ -8,7 +8,8 @@
     "subtitle": "Une question sur CastMate ?<br/><br/>Écrivez-nous, nous vous répondrons rapidement."
   },
   "form": {
-    "endpoint": "https://formspree.io/f/PLACEHOLDER",
+    "endpoint": "https://formspree.io/f/mdajgeva",
+    "successRedirect": "/contact/#merci",
     "nameLabel": "Nom Prénom",
     "namePlaceholder": "Nom Prénom",
     "emailLabel": "Adresse mail",

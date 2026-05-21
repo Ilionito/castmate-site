@@ -8,7 +8,8 @@
     "subtitle": "Réservez une démonstration avec notre équipe. Nous vous montrons la plateforme sur un cas concret."
   },
   "form": {
-    "endpoint": "https://formspree.io/f/PLACEHOLDER",
+    "endpoint": "https://formspree.io/f/xbdboogv",
+    "successRedirect": "/demo/#merci",
     "nameLabel": "Nom Prénom",
     "namePlaceholder": "Nom Prénom",
     "emailLabel": "Adresse mail",
