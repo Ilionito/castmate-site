@@ -6,11 +6,8 @@
 
 backend:
   name: github
-  repo: VOTRE-COMPTE/castmate-site      # <-- owner/repo GitHub à remplacer
-  branch: main
-  # URL du client OAuth (Cloudflare Worker sveltia-cms-auth).
-  # À renseigner après déploiement du Worker — voir README-CMS.md > Authentification.
-  base_url: https://sveltia-cms-auth.VOTRE-SOUS-DOMAINE.workers.dev
+  repo: Ilionito/castmate-site
+  branch: main        # la branche où les modifs doivent atterrir
 
 # Dossier où atterrissent les images/vidéos ajoutées depuis l'admin
 media_folder: "src/assets/uploads"
