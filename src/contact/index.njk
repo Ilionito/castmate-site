@@ -380,6 +380,17 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 @keyframes castmate-faq-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 /* Mobile/tablet: parent Container is column → take full available width */
 @media (max-width: 1199.98px) { .castmate-faq { max-width: 100%; } }
+
+/* --- Header transparent at top, solid on scroll --- */
+nav.framer-mbHhH {
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+  transition: background-color 0.28s ease, box-shadow 0.28s ease;
+}
+body.cm-scrolled nav.framer-mbHhH {
+  background-color: rgb(13, 18, 49) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
 </style></head>
 <body><script data-castmate-reveal>
 (function () {
@@ -444,6 +455,27 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", reveal);
   else reveal();
+})();
+</script><script data-castmate-header>
+(function () {
+  function init() {
+    var sentinel = document.createElement("div");
+    sentinel.id = "cm-scroll-sentinel";
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;";
+    if (document.body.firstChild) document.body.insertBefore(sentinel, document.body.firstChild);
+    else document.body.appendChild(sentinel);
+    if (typeof IntersectionObserver === "undefined") {
+      document.body.classList.add("cm-scrolled");
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      document.body.classList.toggle("cm-scrolled", !entries[0].isIntersecting);
+    });
+    io.observe(sentinel);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
 </script></body>
 </html>

@@ -363,6 +363,35 @@
 @keyframes castmate-faq-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 /* Mobile/tablet: parent Container is column → take full available width */
 @media (max-width: 1199.98px) { .castmate-faq { max-width: 100%; } }
+
+/* --- Header transparent at top, solid on scroll --- */
+nav.framer-mbHhH {
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+  transition: background-color 0.28s ease, box-shadow 0.28s ease;
+}
+body.cm-scrolled nav.framer-mbHhH {
+  background-color: rgb(13, 18, 49) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* --- Mobile menu drawer (vanilla, no Framer runtime) --- */
+.cm-mobile-menu { position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: rgb(13, 18, 49); padding: 24px 32px 32px; z-index: 1000; display: flex; flex-direction: column; gap: 20px; transform: translateY(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); pointer-events: none; }
+[data-cm-menu-open] .cm-mobile-menu { transform: translateY(0); pointer-events: auto; }
+[data-cm-menu-open] { overflow: hidden; }
+.cm-mobile-menu a { color: rgb(255, 255, 255); font-family: 'Archivo', system-ui, sans-serif; font-size: 22px; font-weight: 500; text-decoration: none; padding: 12px 0; }
+.cm-mobile-menu .cm-mobile-menu__cta { background: rgb(80, 18, 2); color: rgb(255, 255, 255); border-radius: 12px; padding: 16px 24px; text-align: center; font-size: 18px; margin-top: 16px; box-shadow: inset 0 0.5px 0 0 rgba(255,255,255,0.2); }
+
+/* --- CTA hover swap (label scale/blur) without Framer runtime --- */
+a:hover .framer-1r36vle, [data-highlight="true"]:hover .framer-1r36vle {
+  opacity: 0; transform: scale(0.8); filter: blur(5px); -webkit-filter: blur(5px);
+  transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+}
+a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 {
+  opacity: 1; transform: none; filter: none; -webkit-filter: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+}
+.framer-1r36vle, .framer-1y6kmu5 { transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease; }
 </style></head>
 <body><script data-castmate-reveal>
 (function () {
@@ -452,6 +481,27 @@
     // Close on Escape
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && document.body.hasAttribute("data-cm-menu-open")) toggle(); });
   });
+})();
+</script><script data-castmate-header>
+(function () {
+  function init() {
+    var sentinel = document.createElement("div");
+    sentinel.id = "cm-scroll-sentinel";
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;";
+    if (document.body.firstChild) document.body.insertBefore(sentinel, document.body.firstChild);
+    else document.body.appendChild(sentinel);
+    if (typeof IntersectionObserver === "undefined") {
+      document.body.classList.add("cm-scrolled");
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      document.body.classList.toggle("cm-scrolled", !entries[0].isIntersecting);
+    });
+    io.observe(sentinel);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
 </script></body>
 </html>
