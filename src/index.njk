@@ -386,6 +386,13 @@ nav.framer-mbHhH [data-framer-name="Menu Icon"] * {
   filter: none !important;
   -webkit-filter: none !important;
 }
+/* Force nav inner layout — Framer's runtime used to set these widths;
+   without the runtime, .framer-us18g7 stayed at width:1px on the Phone
+   Close variant (which doesn't have the width:100% override that other
+   mobile variants got), squashing the logo + hamburger to zero. */
+nav.framer-mbHhH .framer-us18g7 { width: 100% !important; min-width: 0; }
+nav.framer-mbHhH .framer-dponhk { flex: none; }
+nav.framer-mbHhH .framer-1mehg92-container { flex: none; width: 30px !important; height: 30px !important; }
 nav.framer-mbHhH [data-framer-name="Logo"],
 nav.framer-mbHhH [data-framer-name="Menu Icon"] {
   position: relative;
