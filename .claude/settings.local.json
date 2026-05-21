@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"C:\\\\Users\\\\hilli\\\\Downloads\\\\acc1edcf-3f46-4f0a-bb1e-376374e2a749.zip\")",
+      "Bash(python -m http.server 8000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/)",
+      "Bash(vercel --version)",
+      "Bash(npx vercel *)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Conçu pour les équipes de casting",
+  "subtitle": "Chaque fonctionnalité est pensée pour fluidifier l’organisation des castings au quotidien.",
+  "items": [
+    { "title": "Agenda de casting", "text": "Planifiez vos auditions, visualisez les disponibilités et suivez l’avancement de vos sessions en temps réel.", "image": "/assets/framerusercontent.com/images/guVJ1lZ3oZaSDLjAeZqckvqWOi8.png" },
+    { "title": "Candidatures centralisées", "text": "Accédez à tous les profils, médias, échanges et évaluations depuis une plateforme unique.", "image": "/assets/framerusercontent.com/images/c0MSAc75KapaaYyRbqufYXPLB44.png" },
+    { "title": "Automatisation des tâches", "text": "Envoyez automatiquement vos convocations, relances et emails de suivi à chaque étape du casting.", "image": "/assets/framerusercontent.com/images/8Kw5TL2tG6PFHr2uJcC9UgbwCNg.png" },
+    { "title": "Formulaires personnalisés", "text": "Adaptez vos questionnaires et critères de sélection selon les besoins de chaque production.", "image": "/assets/framerusercontent.com/images/npx5DCQxnKbBo1PmF1ntoR5CpQ.png" }
+  ]
+}

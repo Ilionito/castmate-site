@@ -1,0 +1,10 @@
+{
+  "title": "Pilotez avec plus de clarté",
+  "intro": "Accédez en temps réel aux informations essentielles pour suivre vos castings et prendre des décisions plus rapidement.",
+  "blocks": [
+    { "tag": "Pilotage", "title": "Suivez vos castings en temps réel", "text": "Visualisez l’avancement des candidatures, des auditions et des sélections depuis un tableau de bord centralisé.", "image": "/assets/framerusercontent.com/images/LcLv7ymIbkZMv2W4YMHxFzgvVNU.png" },
+    { "tag": "Décision", "title": "Prenez des décisions plus rapidement", "text": "Comparez les profils, partagez les évaluations et identifiez plus facilement les candidats adaptés à votre production.", "image": "/assets/framerusercontent.com/images/ppddy6ayHXJjdJC0W7qHJfsizIU.png" },
+    { "tag": "Fluidité", "title": "Travaillez plus sereinement", "text": "Toutes les informations, échanges et candidatures sont centralisés sur une seule plateforme.", "image": "/assets/framerusercontent.com/images/d9NmG3IMst9baLcV0anEuKJB6s.png" }
+  ],
+  "video": "/assets/framerusercontent.com/assets/pMIZZtn49gMxQx4juAWCOCXMxo.mp4"
+}

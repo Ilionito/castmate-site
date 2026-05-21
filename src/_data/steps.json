@@ -1,0 +1,12 @@
+{
+  "title": "Créez votre casting en quelques minutes",
+  "subtitle": "Configurez votre projet, personnalisez vos formulaires et générez un site de candidature prêt à diffuser.",
+  "items": [
+    { "title": "Créez votre campagne de casting", "text": "Configurez votre projet, personnalisez vos formulaires et générez automatiquement un site de candidature prêt à diffuser en quelques minutes." },
+    { "title": "Attirez les bons profils", "text": "Connectez vos campagnes Meta Ads et Google Ads pour alimenter automatiquement vos candidatures depuis une seule plateforme." },
+    { "title": "Centralisez toutes vos candidatures", "text": "Chaque dossier est structuré, consultable et partagé en temps réel pour simplifier le suivi des profils et la prise de décision." },
+    { "title": "Sélectionnez et planifiez vos auditions", "text": "Filtrez les candidatures, constituez vos shortlists et organisez vos entretiens directement depuis CastMate." },
+    { "title": "Automatisez les échanges candidats", "text": "Convocations, confirmations, relances ou emails de suivi : vos communications sont envoyées automatiquement à chaque étape du casting." },
+    { "title": "Pilotez vos castings en équipe", "text": "Partagez les informations, coordonnez vos équipes et suivez l’avancement du casting sur une plateforme centralisée." }
+  ]
+}

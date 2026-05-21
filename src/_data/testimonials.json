@@ -1,0 +1,8 @@
+{
+  "title": "Les professionnels témoignent",
+  "intro": "Découvrez comment CastMate simplifie le quotidien des professionnels du casting et des productions audiovisuelles.",
+  "items": [
+    { "heading": "CastMate apporte une meilleure visibilité sur les castings et permet de gérer l’organisation avec plus de réactivité.", "quote": "Entre avant et maintenant, la gestion de l’agenda c’est le jour et la nuit. On peut rapidement annuler ou ajuster des créneaux en fonction du nombre d’inscrits.", "author": "Clément", "role": "Directeur de Casting" },
+    { "heading": "CastMate permet de centraliser toutes les informations et de simplifier les tâches au quotidien.", "quote": "Avant, j’avais plein de pages ouvertes pour faire une seule tâche et maintenant un outil pour tout. C’est super pratique de pouvoir accéder à toute la candidature d’un candidat au même endroit, son test de culture générale, son dossier… surtout pendant les RDV.", "author": "Benjamin", "role": "Responsable casting web" }
+  ]
+}

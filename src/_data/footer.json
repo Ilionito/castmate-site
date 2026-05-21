@@ -1,0 +1,18 @@
+{
+  "tagline": "La plateforme tout-en-un pour vos castings.",
+  "linkedinUrl": "https://linkedin.com",
+  "ctaLabel": "Demander une démo",
+  "ctaUrl": "/demo",
+  "legalLinks": [
+    { "label": "Mentions légales", "url": "/legal/mentions-legales" },
+    { "label": "Nos engagements", "url": "/legal/engagements" },
+    { "label": "Politique de protection des données", "url": "/legal/protection-donnees" },
+    { "label": "Conditions d'utilisation", "url": "/legal/conditions-utilisation" }
+  ],
+  "companyName": "CastMate - BV TECH SAS",
+  "email": "contact@castmate.fr",
+  "altEmail": "contact@bvtech.fr",
+  "siren": "901 938 787",
+  "rcs": "Versailles B 901 938 787",
+  "copyright": "© 2025 CastMate - BV TECH SAS. Tous droits réservés."
+}

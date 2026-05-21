@@ -1,0 +1,204 @@
+# =============================================================
+#  CastMate — Configuration Sveltia CMS
+#  Emplacement : src/admin/config.yml  (servi sur /admin/config.yml)
+#  Doc : https://github.com/sveltia/sveltia-cms
+# =============================================================
+
+backend:
+  name: github
+  repo: VOTRE-COMPTE/castmate-site      # <-- owner/repo GitHub à remplacer
+  branch: main
+  # URL du client OAuth (Cloudflare Worker sveltia-cms-auth).
+  # À renseigner après déploiement du Worker — voir README-CMS.md > Authentification.
+  base_url: https://sveltia-cms-auth.VOTRE-SOUS-DOMAINE.workers.dev
+
+# Dossier où atterrissent les images/vidéos ajoutées depuis l'admin
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+# Interface en français
+locale: fr
+
+collections:
+  - name: contenu
+    label: "Contenu du site"
+    label_singular: "Section"
+    description: "Modifiez ici tous les textes, images, vidéos et liens de la page d'accueil."
+    files:
+
+      # ---------- SEO / Métadonnées ----------
+      - name: meta
+        label: "SEO / Métadonnées"
+        file: "src/_data/meta.json"
+        fields:
+          - { name: title, label: "Titre de la page (onglet + Google)", widget: string }
+          - { name: description, label: "Meta description", widget: text }
+          - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+
+      # ---------- Navigation (header) ----------
+      - name: nav
+        label: "Navigation (header)"
+        file: "src/_data/nav.json"
+        fields:
+          - { name: logoAlt, label: "Texte alternatif du logo", widget: string }
+          - name: links
+            label: "Liens du menu"
+            widget: list
+            summary: "{{fields.label}} -> {{fields.url}}"
+            fields:
+              - { name: label, label: "Libellé", widget: string }
+              - { name: url, label: "Lien", widget: string }
+          - { name: ctaLabel, label: "Bouton — libellé", widget: string }
+          - { name: ctaUrl, label: "Bouton — lien", widget: string }
+
+      # ---------- Hero ----------
+      - name: hero
+        label: "Hero (haut de page)"
+        file: "src/_data/hero.json"
+        fields:
+          - { name: backgroundImage, label: "Image de fond (forme)", widget: image, required: false }
+          - { name: title, label: "Titre principal", widget: string }
+          - { name: description, label: "Sous-titre", widget: text }
+          - { name: ctaLabel, label: "Bouton — libellé", widget: string }
+          - { name: ctaUrl, label: "Bouton — lien", widget: string }
+          - name: pills
+            label: "Mots-clés (puces)"
+            widget: list
+            field: { name: label, label: "Texte", widget: string }
+          - { name: image, label: "Image principale", widget: image }
+
+      # ---------- Étapes ----------
+      - name: steps
+        label: "Étapes (Créez votre casting)"
+        file: "src/_data/steps.json"
+        fields:
+          - { name: title, label: "Titre de la section", widget: string }
+          - { name: subtitle, label: "Sous-titre", widget: text }
+          - name: items
+            label: "Étapes"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - { name: text, label: "Description", widget: text }
+
+      # ---------- Fonctionnalités ----------
+      - name: features
+        label: "Fonctionnalités (Conçu pour les équipes)"
+        file: "src/_data/features.json"
+        fields:
+          - { name: title, label: "Titre de la section", widget: string }
+          - { name: subtitle, label: "Sous-titre", widget: text }
+          - name: items
+            label: "Cartes"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - { name: text, label: "Description", widget: text }
+              - { name: image, label: "Image", widget: image }
+
+      # ---------- Sécurité ----------
+      - name: security
+        label: "Sécurité & confidentialité"
+        file: "src/_data/security.json"
+        fields:
+          - { name: title, label: "Titre de la section", widget: string }
+          - { name: intro, label: "Introduction", widget: text }
+          - name: cards
+            label: "Cartes"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Titre", widget: string }
+              - { name: text, label: "Description", widget: text }
+              - { name: image, label: "Image", widget: image }
+
+      # ---------- Pilotage / Clarté ----------
+      - name: clarity
+        label: "Pilotez avec plus de clarté"
+        file: "src/_data/clarity.json"
+        fields:
+          - { name: title, label: "Titre de la section", widget: string }
+          - { name: intro, label: "Introduction", widget: text }
+          - name: blocks
+            label: "Blocs"
+            widget: list
+            summary: "{{fields.tag}} — {{fields.title}}"
+            fields:
+              - { name: tag, label: "Étiquette", widget: string }
+              - { name: title, label: "Titre", widget: string }
+              - { name: text, label: "Description", widget: text }
+              - { name: image, label: "Image", widget: image }
+          - { name: video, label: "Vidéo (.mp4)", widget: file, required: false }
+
+      # ---------- CTA équipe ----------
+      - name: teamCta
+        label: "Bandeau « Travailler en équipe »"
+        file: "src/_data/teamCta.json"
+        fields:
+          - { name: title, label: "Titre", widget: string }
+          - { name: text, label: "Texte", widget: text }
+          - name: bullets
+            label: "Puces"
+            widget: list
+            field: { name: label, label: "Texte", widget: string }
+          - { name: ctaLabel, label: "Bouton — libellé", widget: string }
+          - { name: ctaUrl, label: "Bouton — lien", widget: string }
+
+      # ---------- Témoignages ----------
+      - name: testimonials
+        label: "Témoignages"
+        file: "src/_data/testimonials.json"
+        fields:
+          - { name: title, label: "Titre de la section", widget: string }
+          - { name: intro, label: "Introduction", widget: text }
+          - name: items
+            label: "Témoignages"
+            widget: list
+            summary: "{{fields.author}} — {{fields.role}}"
+            fields:
+              - { name: heading, label: "Accroche", widget: text }
+              - { name: quote, label: "Citation", widget: text }
+              - { name: author, label: "Auteur", widget: string }
+              - { name: role, label: "Fonction", widget: string }
+
+      # ---------- FAQ ----------
+      - name: faq
+        label: "FAQ"
+        file: "src/_data/faq.json"
+        fields:
+          - { name: title, label: "Titre de la section", widget: string }
+          - { name: intro, label: "Introduction", widget: text }
+          - { name: ctaLabel, label: "Bouton — libellé", widget: string }
+          - { name: ctaUrl, label: "Bouton — lien", widget: string }
+          - name: items
+            label: "Questions / Réponses"
+            widget: list
+            summary: "{{fields.question}}"
+            fields:
+              - { name: question, label: "Question", widget: string }
+              - { name: answer, label: "Réponse", widget: text }
+
+      # ---------- Footer ----------
+      - name: footer
+        label: "Pied de page"
+        file: "src/_data/footer.json"
+        fields:
+          - { name: tagline, label: "Accroche", widget: string }
+          - { name: linkedinUrl, label: "Lien LinkedIn", widget: string }
+          - { name: ctaLabel, label: "Bouton — libellé", widget: string }
+          - { name: ctaUrl, label: "Bouton — lien", widget: string }
+          - name: legalLinks
+            label: "Liens légaux"
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { name: label, label: "Libellé", widget: string }
+              - { name: url, label: "Lien", widget: string }
+          - { name: companyName, label: "Raison sociale", widget: string }
+          - { name: email, label: "Email de contact", widget: string }
+          - { name: altEmail, label: "Email secondaire", widget: string }
+          - { name: siren, label: "SIREN", widget: string }
+          - { name: rcs, label: "RCS", widget: string }
+          - { name: copyright, label: "Mention copyright", widget: string }

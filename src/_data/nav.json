@@ -1,0 +1,9 @@
+{
+  "logoAlt": "CastMate",
+  "links": [
+    { "label": "Accueil", "url": "/" },
+    { "label": "Contact", "url": "/contact" }
+  ],
+  "ctaLabel": "Demander une démo",
+  "ctaUrl": "/demo"
+}
