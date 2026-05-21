@@ -11,12 +11,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
 
-  // --- Pages Framer (passthrough temporaire) ----------------------------
-  // La home est maintenant templatée (src/index.njk → consomme src/_data).
-  // Les sous-pages restent en passthrough jusqu'à leur templating éventuel.
-  eleventyConfig.addPassthroughCopy({ "src/contact": "contact" });
-  eleventyConfig.addPassthroughCopy({ "src/demo": "demo" });
-  eleventyConfig.addPassthroughCopy({ "src/legal": "legal" });
+  // --- Pages détachées du runtime Framer --------------------------------
+  // Toutes les pages (home + sous-pages) sont en src/**/index.njk et
+  // consomment src/_data. Aucun passthrough HTML : 11ty les rend toutes.
 
   return {
     dir: {
