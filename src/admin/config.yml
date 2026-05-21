@@ -6,7 +6,7 @@
 
 backend:
   name: github
-  repo: llionito/castmate-site
+  repo: Ilionito/castmate-site
   branch: main
   base_url: https://sveltia-cms-auth.hillion-joris00.workers.dev
 
