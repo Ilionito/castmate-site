@@ -33,7 +33,7 @@
     </div>
     <div class="faq__list" data-anim-stagger="100">
       {% for item in faq.items %}
-      <details class="faq__item"{% if loop.first %} open{% endif %}>
+      <details class="faq__item" name="faq"{% if loop.first %} open{% endif %}>
         <summary><span class="faq__q">{{ item.question }}</span><span class="faq__toggle" aria-hidden="true"></span></summary>
         {% if item.answer %}<div class="faq__a">{{ item.answer }}</div>{% endif %}
       </details>
