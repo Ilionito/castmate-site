@@ -28,9 +28,12 @@
     var ok=type==='success', icon=popup.querySelector('.cm-popup__icon');
     icon.textContent=ok?'✓':'!'; icon.className='cm-popup__icon '+(ok?'is-ok':'is-err');
     popup.querySelector('.cm-popup__title').textContent=ok?'Message envoyé':'Oups…';
-    popup.querySelector('.cm-popup__msg').textContent=ok
-      ?'Merci ! Votre message a bien été reçu, nous revenons vers vous très vite.'
-      :'Une erreur est survenue. Merci de réessayer dans un instant.';
+    var msgEl=popup.querySelector('.cm-popup__msg');
+    if(ok){
+      msgEl.textContent='Merci ! Votre message a bien été reçu, nous revenons vers vous très vite.';
+    } else {
+      msgEl.innerHTML='Une erreur est survenue. Merci de réessayer dans un instant, ou contactez-nous directement à <a href="mailto:contact@castmate.fr" style="color:#081131;font-weight:500;text-decoration:underline">contact@castmate.fr</a>.';
+    }
     popup.hidden=false; requestAnimationFrame(function(){popup.classList.add('is-open');});
   }
   function close(){popup.classList.remove('is-open');setTimeout(function(){popup.hidden=true;},200);}
