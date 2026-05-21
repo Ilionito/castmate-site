@@ -6,11 +6,9 @@
 
 backend:
   name: github
-  repo: VOTRE-COMPTE/castmate-site      # <-- owner/repo GitHub à remplacer
+  repo: Ilionito/castmate-site
   branch: main
-  # URL du client OAuth (Cloudflare Worker sveltia-cms-auth).
-  # À renseigner après déploiement du Worker — voir README-CMS.md > Authentification.
-  base_url: https://sveltia-cms-auth.VOTRE-SOUS-DOMAINE.workers.dev
+  base_url: https://sveltia-cms-auth.hillion-joris00.workers.dev
 
 # Dossier où atterrissent les images/vidéos ajoutées depuis l'admin
 media_folder: "src/assets/uploads"
@@ -192,8 +190,9 @@ collections:
         label: "FAQ"
         file: "src/_data/faq.json"
         fields:
+          - { name: eyebrow, label: "Étiquette (au-dessus du titre, ex. « FAQ »)", widget: string }
           - { name: title, label: "Titre de la section", widget: string }
-          - { name: intro, label: "Introduction", widget: text }
+          - { name: subtitle, label: "Sous-titre", widget: text }
           - { name: ctaLabel, label: "Bouton — libellé", widget: string }
           - { name: ctaUrl, label: "Bouton — lien", widget: string }
           - name: items

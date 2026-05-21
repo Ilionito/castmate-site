@@ -1,6 +1,7 @@
 {
+  "eyebrow": "FAQ",
   "title": "Des questions ?",
-  "intro": "Tout ce qu’il faut savoir sur CastMate, son fonctionnement et la gestion de vos castings.",
+  "subtitle": "Tout ce qu’il faut savoir sur CastMate, son fonctionnement et la gestion de vos castings.",
   "ctaLabel": "Nous contacter",
   "ctaUrl": "/contact",
   "items": [
