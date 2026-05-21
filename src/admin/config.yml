@@ -6,8 +6,9 @@
 
 backend:
   name: github
-  repo: Ilionito/castmate-site
-  branch: main        # la branche où les modifs doivent atterrir
+  repo: llionito/castmate-site
+  branch: main
+  base_url: https://sveltia-cms-auth.hillion-joris00.workers.dev
 
 # Dossier où atterrissent les images/vidéos ajoutées depuis l'admin
 media_folder: "src/assets/uploads"
