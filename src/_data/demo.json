@@ -10,6 +10,7 @@
   "form": {
     "endpoint": "https://formspree.io/f/xbdboogv",
     "successRedirect": "/demo/#merci",
+    "successMessage": "Merci, votre demande de démo est enregistrée. Nous vous recontactons sous peu.",
     "nameLabel": "Nom Prénom",
     "namePlaceholder": "Nom Prénom",
     "emailLabel": "Adresse mail",

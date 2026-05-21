@@ -356,6 +356,17 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 [data-cm-menu-open] { overflow: hidden; }
 .cm-mobile-menu a { color: rgb(255, 255, 255); font-family: 'Archivo', system-ui, sans-serif; font-size: 22px; font-weight: 500; text-decoration: none; padding: 12px 0; }
 .cm-mobile-menu .cm-mobile-menu__cta { background: rgb(80, 18, 2); color: rgb(255, 255, 255); border-radius: 12px; padding: 16px 24px; text-align: center; font-size: 18px; margin-top: 16px; box-shadow: inset 0 0.5px 0 0 rgba(255,255,255,0.2); }
+
+/* --- Header transparent at top, solid on scroll --- */
+nav.framer-mbHhH {
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+  transition: background-color 0.28s ease, box-shadow 0.28s ease;
+}
+body.cm-scrolled nav.framer-mbHhH {
+  background-color: rgb(13, 18, 49) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
 </style></head>
 <body><script data-castmate-reveal>
 (function () {
@@ -401,10 +412,31 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 	
 	
 	<div id="svg-templates" style="position: absolute; overflow: hidden; bottom: 0; left: 0; width: 0; height: 0; z-index: 0; contain: strict" aria-hidden="true">
-<svg display="block" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 L 7.5 7.5 L 0 15 Z" fill-opacity="var(--1m6trwb, 0)" fill="var(--21h8s6, rgb(0, 0, 0))" height="15px" id="G7JipcseD" transform="translate(9 4.5)" width="7.5px"/><path d="M 0 0 L 7.5 7.5 L 0 15" fill="transparent" height="15px" id="qoOYEIyEO" stroke-dasharray="" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--pgex8v, 1.5)" stroke="var(--21h8s6, rgb(0, 0, 0))" transform="translate(9 4.5)" width="7.5px"/></svg>
+<svg display="block" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><symbol id="3166100823" viewBox="0 0 24 24"><path d="M 0 0 L 7.5 7.5 L 0 15 Z" fill-opacity="var(--1m6trwb, 0)" fill="var(--21h8s6, rgb(0, 0, 0))" transform="translate(9 4.5)"/><path d="M 0 0 L 7.5 7.5 L 0 15" fill="transparent" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--pgex8v, 1.5)" stroke="var(--21h8s6, rgb(0, 0, 0))" transform="translate(9 4.5)"/></symbol><path d="M 0 0 L 7.5 7.5 L 0 15 Z" fill-opacity="var(--1m6trwb, 0)" fill="var(--21h8s6, rgb(0, 0, 0))" height="15px" id="G7JipcseD" transform="translate(9 4.5)" width="7.5px"/><path d="M 0 0 L 7.5 7.5 L 0 15" fill="transparent" height="15px" id="qoOYEIyEO" stroke-dasharray="" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--pgex8v, 1.5)" stroke="var(--21h8s6, rgb(0, 0, 0))" transform="translate(9 4.5)" width="7.5px"/></svg>
 </div>
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
-<style>#__framer-badge-container,#__framer-badge,[data-framer-badge],a[href*="framer.com/?utm_source=framer-banner-"]{display:none!important;visibility:hidden!important;height:0!important;width:0!important;overflow:hidden!important;pointer-events:none!important}</style></body>
+<style>#__framer-badge-container,#__framer-badge,[data-framer-badge],a[href*="framer.com/?utm_source=framer-banner-"]{display:none!important;visibility:hidden!important;height:0!important;width:0!important;overflow:hidden!important;pointer-events:none!important}</style><script data-castmate-header>
+(function () {
+  function init() {
+    var sentinel = document.createElement("div");
+    sentinel.id = "cm-scroll-sentinel";
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;";
+    if (document.body.firstChild) document.body.insertBefore(sentinel, document.body.firstChild);
+    else document.body.appendChild(sentinel);
+    if (typeof IntersectionObserver === "undefined") {
+      document.body.classList.add("cm-scrolled");
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      document.body.classList.toggle("cm-scrolled", !entries[0].isIntersecting);
+    });
+    io.observe(sentinel);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script></body>
 </html>
