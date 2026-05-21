@@ -364,18 +364,19 @@
 /* Mobile/tablet: parent Container is column → take full available width */
 @media (max-width: 1199.98px) { .castmate-faq { max-width: 100%; } }
 
-/* --- Site header: ONE bar, transparent at top → navy on scroll.
-   .framer-7lsjpz-container is the position:fixed wrapper that already
-   holds all 3 SSR nav variants — we paint ITS background directly, so
-   there is never a second bar. Nav itself stays transparent. */
+/* --- Site header: opaque navy at rest (#081131), shadow only on scroll.
+   .framer-7lsjpz-container is the position:fixed wrapper Framer already
+   places around the 3 SSR nav variants. We paint ITS background navy so
+   logo + links + CTA always sit on a known dark backdrop — the hero image
+   can no longer bleed through and swallow them. .is-scrolled adds an
+   ambient shadow only — no color shift, no "second bar". */
 .framer-7lsjpz-container {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgb(8, 17, 49);
   box-shadow: none;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: box-shadow 0.25s ease;
 }
 .framer-7lsjpz-container.is-scrolled {
-  background-color: rgb(8, 17, 49);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 nav.framer-mbHhH {
   background-color: transparent !important;
@@ -386,7 +387,7 @@ nav.framer-mbHhH .framer-18bigat,
 nav.framer-mbHhH .framer-us18g7 {
   overflow: visible !important;
 }
-/* Content (logo, links, CTA) above bg + always rendered (no entry animation residue) */
+/* Content (logo, links, CTA) above bg + no entry-animation residue */
 nav.framer-mbHhH [data-framer-name="Logo"],
 nav.framer-mbHhH [data-framer-name="Menu Icon"],
 nav.framer-mbHhH .framer-s7u4pi,
@@ -395,13 +396,26 @@ nav.framer-mbHhH .framer-1b9nrim-container {
   z-index: 2;
 }
 nav.framer-mbHhH [data-framer-name="Logo"],
-nav.framer-mbHhH [data-framer-name="Menu Icon"],
-nav.framer-mbHhH [data-framer-name="Logo"] *,
-nav.framer-mbHhH [data-framer-name="Menu Icon"] * {
+nav.framer-mbHhH [data-framer-name="Menu Icon"] {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
   -webkit-filter: none !important;
+}
+nav.framer-mbHhH [data-framer-name="Menu Icon"] * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* Logo PNG is monochrome dark — force it white so it reads on navy */
+nav.framer-mbHhH [data-framer-name="Logo"] img {
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+}
+/* CTA "Demander une démo" bg = #081131 = same navy as header → no contrast.
+   Framer draws the border on ::after via var(--border-color); inline style
+   sets it to rgba(255,255,255,0.18) (too faint). Raise the CSS variable. */
+nav.framer-mbHhH a.framer-BcHjm {
+  --border-color: rgba(255, 255, 255, 0.45) !important;
 }
 /* Force nav inner layout — Framer's runtime used to set these widths;
    without the runtime, .framer-us18g7 stayed at width:1px on the Phone
