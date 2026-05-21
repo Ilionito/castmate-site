@@ -378,6 +378,13 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 
 /* Bouton submit du form (Framer "Envoyer") — espacement texte ↔ icône. */
 button.framer-q8cig .framer-1gq3osb { margin-left: 14px; }
+/* Image latérale du form : épouse la hauteur du form (le plus court des
+   deux). Sans override, l'aspect-ratio de l'image (7198×7892, ~0.91)
+   driveait la hauteur du wrapper à 660 alors que le form fait 627.
+   Solution : sortir l'<img> du flow (position:absolute) pour qu'elle ne
+   contraigne plus la hauteur, et la laisser remplir le wrapper en cover. */
+[data-framer-name="Image Wrap"] { position: relative !important; }
+[data-framer-name="Image Wrap"] > img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
 </style></head>
 <body>
 {% include "header.njk" %}{% include "scroll-anim.njk" %}

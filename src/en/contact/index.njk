@@ -378,6 +378,9 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 
 /* Bouton submit du form (Framer "Envoyer") — espacement texte ↔ icône. */
 button.framer-q8cig .framer-1gq3osb { margin-left: 14px; }
+/* Image latérale du form : sortir l'<img> du flow pour ne plus contraindre la hauteur du wrapper. */
+[data-framer-name="Image Wrap"] { position: relative !important; }
+[data-framer-name="Image Wrap"] > img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
 </style></head>
 <body>
 {% set lang = "en" %}
