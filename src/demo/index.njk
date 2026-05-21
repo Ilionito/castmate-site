@@ -362,6 +362,24 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 .cm-merci.is-shown { display: block; }
 #merci:target { display: block; }
 @media (max-width: 600px) { .cm-merci { font-size: 15px; padding: 16px 20px; margin: 0 16px 24px; } }
+
+.castmate-faq { display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; padding: 0; flex: 1 1 0; min-width: 0; max-width: 720px; }
+.castmate-faq__item { background: rgb(255, 255, 255); border: 1px solid rgb(240, 240, 240); border-radius: 24px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.castmate-faq__item[open] { border-color: rgb(220, 220, 220); }
+.castmate-faq__summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Archivo', system-ui, sans-serif; font-weight: 500; font-size: clamp(14px, 1.6vw, 18px); color: rgb(80, 18, 2); }
+.castmate-faq__summary::-webkit-details-marker { display: none; }
+.castmate-faq__summary::marker { content: ''; }
+.castmate-faq__question { flex: 1; line-height: 1.4; }
+.castmate-faq__icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgb(240, 240, 240); background-color: rgb(255, 255, 255); position: relative; transition: background-color 0.18s ease, border-color 0.18s ease; }
+.castmate-faq__icon::before, .castmate-faq__icon::after { content: ''; position: absolute; top: 50%; left: 50%; width: 14px; height: 1.5px; background-color: rgb(80, 18, 2); transform: translate(-50%, -50%); transition: background-color 0.18s ease, opacity 0.18s ease; }
+.castmate-faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.castmate-faq__item[open] .castmate-faq__icon { background-color: rgb(80, 18, 2); border-color: rgb(80, 18, 2); }
+.castmate-faq__item[open] .castmate-faq__icon::before, .castmate-faq__item[open] .castmate-faq__icon::after { background-color: rgb(255, 255, 255); }
+.castmate-faq__item[open] .castmate-faq__icon::after { opacity: 0; }
+.castmate-faq__answer { padding: 0 24px 24px; font-family: 'Archivo', system-ui, sans-serif; font-weight: 400; font-size: 16px; line-height: 1.55; color: rgb(155, 123, 110); animation: castmate-faq-fade 0.18s ease; }
+@keyframes castmate-faq-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+/* Mobile/tablet: parent Container is column → take full available width */
+@media (max-width: 1199.98px) { .castmate-faq { max-width: 100%; } }
 </style></head>
 <body><script data-castmate-reveal>
 (function () {

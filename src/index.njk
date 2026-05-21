@@ -346,7 +346,7 @@
     
     <!-- End of headEnd -->
 <style data-castmate-faq>
-.castmate-faq { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 0 20px; }
+.castmate-faq { display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; padding: 0; flex: 1 1 0; min-width: 0; max-width: 720px; }
 .castmate-faq__item { background: rgb(255, 255, 255); border: 1px solid rgb(240, 240, 240); border-radius: 24px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
 .castmate-faq__item[open] { border-color: rgb(220, 220, 220); }
 .castmate-faq__summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'Archivo', system-ui, sans-serif; font-weight: 500; font-size: clamp(14px, 1.6vw, 18px); color: rgb(80, 18, 2); }
@@ -361,27 +361,8 @@
 .castmate-faq__item[open] .castmate-faq__icon::after { opacity: 0; }
 .castmate-faq__answer { padding: 0 24px 24px; font-family: 'Archivo', system-ui, sans-serif; font-weight: 400; font-size: 16px; line-height: 1.55; color: rgb(155, 123, 110); animation: castmate-faq-fade 0.18s ease; }
 @keyframes castmate-faq-fade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
-
-
-/* --- Mobile menu drawer (vanilla, no Framer runtime) --- */
-.cm-mobile-menu { position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: rgb(13, 18, 49); padding: 24px 32px 32px; z-index: 1000; display: flex; flex-direction: column; gap: 20px; transform: translateY(-100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); pointer-events: none; }
-[data-cm-menu-open] .cm-mobile-menu { transform: translateY(0); pointer-events: auto; }
-[data-cm-menu-open] { overflow: hidden; }
-.cm-mobile-menu a { color: rgb(255, 255, 255); font-family: 'Archivo', system-ui, sans-serif; font-size: 22px; font-weight: 500; text-decoration: none; padding: 12px 0; }
-.cm-mobile-menu .cm-mobile-menu__cta { background: rgb(80, 18, 2); color: rgb(255, 255, 255); border-radius: 12px; padding: 16px 24px; text-align: center; font-size: 18px; margin-top: 16px; box-shadow: inset 0 0.5px 0 0 rgba(255,255,255,0.2); }
-/* Animate hamburger lines into an X */
-
-
-/* --- Restore CTA hover swap (label scale/blur) without Framer runtime --- */
-a:hover .framer-1r36vle, [data-highlight="true"]:hover .framer-1r36vle {
-  opacity: 0; transform: scale(0.8); filter: blur(5px); -webkit-filter: blur(5px);
-  transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
-}
-a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 {
-  opacity: 1; transform: none; filter: none; -webkit-filter: none;
-  transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
-}
-.framer-1r36vle, .framer-1y6kmu5 { transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease; }
+/* Mobile/tablet: parent Container is column → take full available width */
+@media (max-width: 1199.98px) { .castmate-faq { max-width: 100%; } }
 </style></head>
 <body><script data-castmate-reveal>
 (function () {
