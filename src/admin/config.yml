@@ -44,6 +44,9 @@ collections:
           - name: links
             label: "Liens du menu"
             widget: list
+            # Liste indexée côté template (accès {{ nav.links[N] }}) — figée à 2 items.
+            min: 2
+            max: 2
             summary: "{{fields.label}} -> {{fields.url}}"
             fields:
               - { name: label, label: "Libellé", widget: string }
@@ -64,6 +67,9 @@ collections:
           - name: pills
             label: "Mots-clés (puces)"
             widget: list
+            # Liste indexée — figée à 4 items.
+            min: 4
+            max: 4
             field: { name: label, label: "Texte", widget: string }
           - { name: image, label: "Image principale", widget: image }
 
@@ -77,6 +83,9 @@ collections:
           - name: items
             label: "Étapes"
             widget: list
+            # Liste indexée — figée à 6 items.
+            min: 6
+            max: 6
             summary: "{{fields.title}}"
             fields:
               - { name: title, label: "Titre", widget: string }
@@ -92,6 +101,9 @@ collections:
           - name: items
             label: "Cartes"
             widget: list
+            # Liste indexée — figée à 4 items.
+            min: 4
+            max: 4
             summary: "{{fields.title}}"
             fields:
               - { name: title, label: "Titre", widget: string }
@@ -108,6 +120,9 @@ collections:
           - name: cards
             label: "Cartes"
             widget: list
+            # Liste indexée — figée à 2 items.
+            min: 2
+            max: 2
             summary: "{{fields.title}}"
             fields:
               - { name: title, label: "Titre", widget: string }
@@ -124,6 +139,9 @@ collections:
           - name: blocks
             label: "Blocs"
             widget: list
+            # Liste indexée — figée à 3 items.
+            min: 3
+            max: 3
             summary: "{{fields.tag}} — {{fields.title}}"
             fields:
               - { name: tag, label: "Étiquette", widget: string }
@@ -142,6 +160,9 @@ collections:
           - name: bullets
             label: "Puces"
             widget: list
+            # Liste indexée — figée à 3 items.
+            min: 3
+            max: 3
             field: { name: label, label: "Texte", widget: string }
           - { name: ctaLabel, label: "Bouton — libellé", widget: string }
           - { name: ctaUrl, label: "Bouton — lien", widget: string }
@@ -156,6 +177,9 @@ collections:
           - name: items
             label: "Témoignages"
             widget: list
+            # Liste indexée — figée à 2 items.
+            min: 2
+            max: 2
             summary: "{{fields.author}} — {{fields.role}}"
             fields:
               - { name: heading, label: "Accroche", widget: text }
@@ -192,6 +216,9 @@ collections:
           - name: legalLinks
             label: "Liens légaux"
             widget: list
+            # Liste indexée — figée à 4 items.
+            min: 4
+            max: 4
             summary: "{{fields.label}}"
             fields:
               - { name: label, label: "Libellé", widget: string }
