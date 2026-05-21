@@ -379,38 +379,7 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 
 </style></head>
 <body>
-{% include "header.njk" %}<script data-castmate-reveal>
-(function () {
-  function init() {
-    var els = document.querySelectorAll('[style*="will-change:transform"]');
-    var targets = [];
-    for (var i = 0; i < els.length; i++) {
-      var s = els[i].style;
-      if (s.opacity !== "" && parseFloat(s.opacity) < 1) {
-        targets.push(els[i]);
-        s.transition = "opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
-      }
-    }
-    if (!targets.length) return;
-    if (typeof IntersectionObserver === "undefined") {
-      targets.forEach(function (el) { el.style.opacity = "1"; el.style.transform = "none"; });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          el.style.opacity = "1"; el.style.transform = "none"; el.style.filter = "none"; el.style.webkitFilter = "none";
-          io.unobserve(el);
-        }
-      });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
-    targets.forEach(function (el) { io.observe(el); });
-  }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
-  else init();
-})();
-</script>
+{% include "header.njk" %}{% include "scroll-anim.njk" %}
 	
 	<!-- Start of bodyStart -->
     

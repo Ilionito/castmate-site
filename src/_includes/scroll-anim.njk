@@ -1,0 +1,107 @@
+{# Animations au scroll — source unique pour home / contact / demo.
+   Respecte prefers-reduced-motion. Trois systèmes coexistent :
+
+   1. Legacy Framer SSR : tout élément avec style="will-change:transform;
+      opacity:0; transform:..." est révélé à l'entrée du viewport
+      (compatibilité du runtime Framer retiré).
+   2. Opt-in moderne via attributs `data-anim` (fade-up / fade-down /
+      fade-left / fade-right / scale / fade). Plus propre, géré par classe.
+   3. Stagger : `data-anim-stagger="80"` sur un parent → ses enfants
+      reçoivent data-anim="fade-up" + transition-delay incrémentale. #}
+<style data-scroll-anim>
+[data-anim] {
+  opacity: 0;
+  transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+  will-change: transform, opacity;
+}
+[data-anim="fade-up"]    { transform: translateY(32px); }
+[data-anim="fade-down"]  { transform: translateY(-32px); }
+[data-anim="fade-left"]  { transform: translateX(32px); }
+[data-anim="fade-right"] { transform: translateX(-32px); }
+[data-anim="scale"]      { transform: scale(.94); }
+[data-anim="fade"]       { /* opacity-only */ }
+[data-anim].is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-anim], [style*="will-change:transform"] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+<script data-scroll-anim>
+(function () {
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function init() {
+    // --- 1. Legacy Framer elements (inline opacity:0 + will-change:transform) ---
+    var legacy = document.querySelectorAll('[style*="will-change:transform"]');
+    var legacyTargets = [];
+    for (var i = 0; i < legacy.length; i++) {
+      var s = legacy[i].style;
+      if (s.opacity !== "" && parseFloat(s.opacity) < 1) {
+        legacyTargets.push(legacy[i]);
+        s.transition = "opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1), filter .8s cubic-bezier(.16, 1, .3, 1)";
+      }
+    }
+
+    // --- 2. data-anim explicit + 3. stagger groups ---
+    var animEls = Array.prototype.slice.call(document.querySelectorAll('[data-anim]'));
+    document.querySelectorAll('[data-anim-stagger]').forEach(function (parent) {
+      var step = parseInt(parent.dataset.animStagger, 10) || 80;
+      Array.prototype.slice.call(parent.children).forEach(function (child, idx) {
+        if (!child.hasAttribute('data-anim')) child.setAttribute('data-anim', 'fade-up');
+        child.style.transitionDelay = (idx * step) + 'ms';
+        if (animEls.indexOf(child) < 0) animEls.push(child);
+      });
+    });
+
+    // Reduced-motion : tout est révélé immédiatement, sans transition.
+    if (reduced) {
+      legacyTargets.forEach(function (el) {
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+        el.style.webkitFilter = 'none';
+      });
+      animEls.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+
+    // Safety net : IO indisponible → tout révélé instantanément.
+    if (typeof IntersectionObserver === 'undefined') {
+      legacyTargets.forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+      });
+      animEls.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        if (el.hasAttribute('data-anim')) {
+          el.classList.add('is-in');
+        } else {
+          // Legacy : on touche au style inline
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          el.style.filter = 'none';
+          el.style.webkitFilter = 'none';
+        }
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+    legacyTargets.forEach(function (el) { io.observe(el); });
+    animEls.forEach(function (el) { io.observe(el); });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
