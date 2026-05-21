@@ -371,13 +371,12 @@ nav.framer-mbHhH {
   z-index: 100;
   background-color: rgba(0, 0, 0, 0) !important;
   box-shadow: none;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 nav.framer-mbHhH.is-scrolled {
-  background-color: rgb(13, 18, 49) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  background-color: rgb(8, 17, 49) !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
-/* Logo + hamburger float above the nav's painted background */
 nav.framer-mbHhH [data-framer-name="Logo"],
 nav.framer-mbHhH [data-framer-name="Menu Icon"] {
   position: relative;
@@ -491,26 +490,15 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 {
 })();
 </script><script data-castmate-header>
 (function () {
-  function init() {
-    var navs = document.querySelectorAll("nav.framer-mbHhH");
-    if (!navs.length) return;
-    var sentinel = document.getElementById("cm-scroll-sentinel");
-    if (!sentinel) {
-      sentinel = document.createElement("div");
-      sentinel.id = "cm-scroll-sentinel";
-      sentinel.setAttribute("aria-hidden", "true");
-      sentinel.style.cssText = "position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;";
-      document.body.insertBefore(sentinel, document.body.firstChild);
-    }
-    if (typeof IntersectionObserver === "undefined") {
-      navs.forEach(function (n) { n.classList.add("is-scrolled"); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      var scrolled = !entries[0].isIntersecting;
-      navs.forEach(function (n) { n.classList.toggle("is-scrolled", scrolled); });
+  function update() {
+    var scrolled = window.scrollY > 40;
+    document.querySelectorAll("nav.framer-mbHhH").forEach(function (n) {
+      n.classList.toggle("is-scrolled", scrolled);
     });
-    io.observe(sentinel);
+  }
+  function init() {
+    update();
+    window.addEventListener("scroll", update, { passive: true });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
