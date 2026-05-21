@@ -6,7 +6,7 @@
 .site-header__nav{justify-self:center;display:flex;gap:24px}
 .site-header__nav a{color:#fff;text-decoration:none;font-size:15px}
 .site-header__burger{display:none;justify-self:end;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
-.site-header__burger span{width:24px;height:2px;background:#fff;border-radius:2px}
+.site-header__burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease;transform-origin:center}
 .site-header.is-scrolled{background:#081131;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 /* Le CTA du header réutilise le composant Framer "Link - Black Button" : pas de
    style override, seulement le positionnement dans la 3e colonne du grid. */
@@ -17,8 +17,11 @@
   .site-header__inner{grid-template-columns:1fr auto}
   .site-header__nav,.site-header__inner > .framer-BcHjm{display:none}
   .site-header__burger{display:flex}
-  .site-header.is-open .site-drawer{display:flex;position:fixed;top:96px;left:0;right:0;background:#0d1231;flex-direction:column;gap:18px;padding:24px 30px 32px}
-  .site-header.is-open .site-drawer a{color:#fff;text-decoration:none}
+  .site-header.is-open .site-drawer{display:flex;flex-direction:column;gap:14px;position:fixed;top:84px;right:16px;min-width:210px;background:#fff;border-radius:16px;padding:22px 26px;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+  .site-header.is-open .site-drawer a{color:#081131;text-decoration:none;font-weight:500;font-size:16px}
+  .site-header.is-open .site-header__burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .site-header.is-open .site-header__burger span:nth-child(2){opacity:0}
+  .site-header.is-open .site-header__burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
 </style>
 
