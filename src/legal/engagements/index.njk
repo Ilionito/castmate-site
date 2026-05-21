@@ -357,17 +357,25 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 .cm-mobile-menu a { color: rgb(255, 255, 255); font-family: 'Archivo', system-ui, sans-serif; font-size: 22px; font-weight: 500; text-decoration: none; padding: 12px 0; }
 .cm-mobile-menu .cm-mobile-menu__cta { background: rgb(80, 18, 2); color: rgb(255, 255, 255); border-radius: 12px; padding: 16px 24px; text-align: center; font-size: 18px; margin-top: 16px; box-shadow: inset 0 0.5px 0 0 rgba(255,255,255,0.2); }
 
-/* --- Header transparent at top, solid on scroll --- */
+/* --- Site header: sticky, transparent at top, solid on scroll --- */
 nav.framer-mbHhH {
+  position: sticky !important;
+  top: 0;
+  z-index: 100;
   background-color: rgba(0, 0, 0, 0) !important;
   box-shadow: none;
-  transition: background-color 0.28s ease, box-shadow 0.28s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
-body.cm-scrolled nav.framer-mbHhH {
+nav.framer-mbHhH.is-scrolled {
   background-color: rgb(13, 18, 49) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
 }
-</style></head>
+/* Logo + hamburger float above the nav's painted background */
+nav.framer-mbHhH [data-framer-name="Logo"],
+nav.framer-mbHhH [data-framer-name="Menu Icon"] {
+  position: relative;
+  z-index: 1;
+}</style></head>
 <body><script data-castmate-reveal>
 (function () {
   function init() {
@@ -420,18 +428,23 @@ body.cm-scrolled nav.framer-mbHhH {
 <style>#__framer-badge-container,#__framer-badge,[data-framer-badge],a[href*="framer.com/?utm_source=framer-banner-"]{display:none!important;visibility:hidden!important;height:0!important;width:0!important;overflow:hidden!important;pointer-events:none!important}</style><script data-castmate-header>
 (function () {
   function init() {
-    var sentinel = document.createElement("div");
-    sentinel.id = "cm-scroll-sentinel";
-    sentinel.setAttribute("aria-hidden", "true");
-    sentinel.style.cssText = "position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;";
-    if (document.body.firstChild) document.body.insertBefore(sentinel, document.body.firstChild);
-    else document.body.appendChild(sentinel);
+    var navs = document.querySelectorAll("nav.framer-mbHhH");
+    if (!navs.length) return;
+    var sentinel = document.getElementById("cm-scroll-sentinel");
+    if (!sentinel) {
+      sentinel = document.createElement("div");
+      sentinel.id = "cm-scroll-sentinel";
+      sentinel.setAttribute("aria-hidden", "true");
+      sentinel.style.cssText = "position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;";
+      document.body.insertBefore(sentinel, document.body.firstChild);
+    }
     if (typeof IntersectionObserver === "undefined") {
-      document.body.classList.add("cm-scrolled");
+      navs.forEach(function (n) { n.classList.add("is-scrolled"); });
       return;
     }
     var io = new IntersectionObserver(function (entries) {
-      document.body.classList.toggle("cm-scrolled", !entries[0].isIntersecting);
+      var scrolled = !entries[0].isIntersecting;
+      navs.forEach(function (n) { n.classList.toggle("is-scrolled", scrolled); });
     });
     io.observe(sentinel);
   }
