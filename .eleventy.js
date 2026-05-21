@@ -12,12 +12,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
 
   // --- Pages Framer (passthrough temporaire) ----------------------------
-  // Tant que les pages n'ont pas été converties en templates Nunjucks
-  // (étape 2 du README-CMS.md), on les copie telles quelles.
-  // Pour activer le templating sur la home : renommer src/index.html en
-  // src/index.njk, remplacer les chaînes par {{ hero.title }} etc., et
-  // SUPPRIMER la ligne addPassthroughCopy correspondante ci-dessous.
-  eleventyConfig.addPassthroughCopy({ "src/index.html": "index.html" });
+  // La home est maintenant templatée (src/index.njk → consomme src/_data).
+  // Les sous-pages restent en passthrough jusqu'à leur templating éventuel.
   eleventyConfig.addPassthroughCopy({ "src/contact": "contact" });
   eleventyConfig.addPassthroughCopy({ "src/demo": "demo" });
   eleventyConfig.addPassthroughCopy({ "src/legal": "legal" });
