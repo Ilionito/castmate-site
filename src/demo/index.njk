@@ -381,18 +381,35 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 { opacity
 /* Mobile/tablet: parent Container is column → take full available width */
 @media (max-width: 1199.98px) { .castmate-faq { max-width: 100%; } }
 
-/* --- Site header: sticky, transparent at top, solid on scroll --- */
-nav.framer-mbHhH {
-  position: sticky !important;
-  top: 0;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0) !important;
+/* --- Site header: ONE bar, transparent at top → navy on scroll.
+   .framer-7lsjpz-container is the position:fixed wrapper that already
+   holds all 3 SSR nav variants — we paint ITS background directly, so
+   there is never a second bar. Nav itself stays transparent. */
+.framer-7lsjpz-container {
+  background-color: rgba(0, 0, 0, 0);
   box-shadow: none;
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
-nav.framer-mbHhH.is-scrolled {
-  background-color: rgb(8, 17, 49) !important;
+.framer-7lsjpz-container.is-scrolled {
+  background-color: rgb(8, 17, 49);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+nav.framer-mbHhH {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+nav.framer-mbHhH .framer-18bigat,
+nav.framer-mbHhH .framer-us18g7 {
+  overflow: visible !important;
+}
+/* Content (logo, links, CTA) above bg + always rendered (no entry animation residue) */
+nav.framer-mbHhH [data-framer-name="Logo"],
+nav.framer-mbHhH [data-framer-name="Menu Icon"],
+nav.framer-mbHhH .framer-s7u4pi,
+nav.framer-mbHhH .framer-1b9nrim-container {
+  position: relative;
+  z-index: 2;
 }
 nav.framer-mbHhH [data-framer-name="Logo"],
 nav.framer-mbHhH [data-framer-name="Menu Icon"],
@@ -405,16 +422,10 @@ nav.framer-mbHhH [data-framer-name="Menu Icon"] * {
 }
 /* Force nav inner layout — Framer's runtime used to set these widths;
    without the runtime, .framer-us18g7 stayed at width:1px on the Phone
-   Close variant (which doesn't have the width:100% override that other
-   mobile variants got), squashing the logo + hamburger to zero. */
+   Close variant, squashing the logo + hamburger to zero. */
 nav.framer-mbHhH .framer-us18g7 { width: 100% !important; min-width: 0; }
 nav.framer-mbHhH .framer-dponhk { flex: none; }
-nav.framer-mbHhH .framer-1mehg92-container { flex: none; width: 30px !important; height: 30px !important; }
-nav.framer-mbHhH [data-framer-name="Logo"],
-nav.framer-mbHhH [data-framer-name="Menu Icon"] {
-  position: relative;
-  z-index: 1;
-}</style></head>
+nav.framer-mbHhH .framer-1mehg92-container { flex: none; width: 30px !important; height: 30px !important; }</style></head>
 <body><script data-castmate-reveal>
 (function () {
   function init() {
@@ -483,7 +494,7 @@ nav.framer-mbHhH [data-framer-name="Menu Icon"] {
 (function () {
   function update() {
     var scrolled = window.scrollY > 40;
-    document.querySelectorAll("nav.framer-mbHhH").forEach(function (n) {
+    document.querySelectorAll(".framer-7lsjpz-container").forEach(function (n) {
       n.classList.toggle("is-scrolled", scrolled);
     });
   }
