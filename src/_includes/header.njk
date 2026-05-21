@@ -1,85 +1,49 @@
-{# Site header — single source of truth, lit `nav.json`.
-   Comportement :
-     - Fond navy #081131 plein, fixed top z-index 100, hauteur 96px.
-     - Logo blanc à gauche, nav centrée, CTA "Demander une démo" à droite.
-     - Scroll > 40px : ajoute uniquement une ombre (.is-scrolled). Pas de
-       changement de couleur (déjà navy).
-     - Breakpoint mobile : 860px. <860px → nav + CTA cachés, burger visible,
-       drawer fermé par défaut (translateY hors écran). Ouverture au clic.
-       Fermeture au clic sur un lien et sur la touche Échap.
-   nav.json clés utilisées : logoAlt, links[], ctaLabel, ctaUrl. #}
-<style data-site-header>
-.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #081131; transition: box-shadow .25s ease; }
-.site-header__inner { max-width: 1200px; margin: 0 auto; height: 96px; padding: 0 30px; display: flex; align-items: center; gap: 32px; }
-.site-header__logo { flex: 0 0 auto; display: inline-flex; align-items: center; }
-.site-header__logo img { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
-.site-header__nav { flex: 1 1 auto; display: flex; justify-content: center; gap: 36px; }
-.site-header__nav a { color: #fff; text-decoration: none; font-family: 'Archivo', system-ui, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: .01em; transition: opacity .2s ease; }
-.site-header__nav a:hover, .site-header__nav a:focus-visible { opacity: .75; }
-.site-header__cta { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 12px; background: #081131; color: #fff; border: 1px solid rgba(255, 255, 255, .18); border-radius: 12px; padding: 8px 8px 8px 18px; font-family: 'Archivo', system-ui, sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
-.site-header__cta:hover, .site-header__cta:focus-visible { border-color: rgba(255, 255, 255, .45); transform: translateY(-1px); }
-.site-header__cta-icon { width: 36px; height: 36px; border-radius: 8px; background: #081131; display: inline-flex; align-items: center; justify-content: center; box-shadow: inset 0 -0.8px 0.8px 0 rgba(255, 255, 255, .14), inset 0 1px 0.8px 0 rgba(255, 255, 255, .29); }
-.site-header__cta-icon svg { display: block; }
-.site-header__burger { display: none; flex-direction: column; gap: 6px; background: none; border: 0; padding: 8px; cursor: pointer; margin-left: auto; }
-.site-header__burger span { width: 26px; height: 2px; background: #fff; border-radius: 2px; display: block; transition: transform .25s ease, opacity .2s ease; }
-.site-header.is-open .site-header__burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.site-header.is-open .site-header__burger span:nth-child(2) { opacity: 0; }
-.site-header.is-open .site-header__burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-.site-header.is-scrolled { box-shadow: 0 1px 0 rgba(255, 255, 255, .08), 0 6px 20px rgba(0, 0, 0, .25); }
-.site-drawer { display: none; }
-.site-drawer a { color: #fff; text-decoration: none; font-family: 'Archivo', system-ui, sans-serif; font-size: 22px; font-weight: 500; padding: 12px 0; }
-.site-drawer a:last-child { margin-top: 8px; background: #081131; color: #fff; border: 1px solid rgba(255, 255, 255, .45); border-radius: 12px; padding: 14px 20px; text-align: center; font-size: 18px; }
-@media (max-width: 860px) {
-  .site-header__inner { grid-template-columns: 1fr auto; }
-  .site-header__nav, .site-header__cta { display: none; }
-  .site-header__burger { display: flex; }
-  .site-drawer { display: flex; position: fixed; top: 96px; left: 0; right: 0; background: #0d1231; flex-direction: column; gap: 18px; padding: 24px 30px 32px; transform: translateY(-110%); transition: transform .28s cubic-bezier(.4, 0, .2, 1); pointer-events: none; }
-  .site-header.is-open .site-drawer { transform: translateY(0); pointer-events: auto; }
+<style>
+.site-header{position:fixed;inset:0 0 auto;z-index:100;background:#081131;transition:box-shadow .25s}
+.site-header__inner{max-width:1200px;margin:0 auto;height:96px;padding:0 30px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.site-header__logo{justify-self:start}
+.site-header__logo img{height:28px;width:auto;display:block;filter:brightness(0) invert(1)}
+.site-header__nav{justify-self:center;display:flex;gap:24px}
+.site-header__nav a{color:#fff;text-decoration:none;font-size:15px}
+.site-header__cta{justify-self:end;display:inline-flex;align-items:center;gap:10px;background:#081131;color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:6px 6px 6px 16px;font-size:15px;font-weight:500;text-decoration:none;box-shadow:inset 0 .5px 0 #878787,inset 0 2px 5.85px rgba(255,255,255,.2)}
+.site-header__cta .ico{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#081131;box-shadow:inset 0 -.8px .8px rgba(255,255,255,.14),inset 0 1px .8px rgba(255,255,255,.29)}
+.site-header__burger{display:none;justify-self:end;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
+.site-header__burger span{width:24px;height:2px;background:#fff;border-radius:2px}
+.site-header.is-scrolled{box-shadow:0 6px 20px rgba(0,0,0,.25)}
+/* DRAWER : caché partout par défaut ; affiché seulement quand .is-open en mobile */
+.site-drawer{display:none}
+@media(max-width:860px){
+  .site-header__inner{grid-template-columns:1fr auto}
+  .site-header__nav,.site-header__cta{display:none}
+  .site-header__burger{display:flex}
+  .site-header.is-open .site-drawer{display:flex;position:fixed;top:96px;left:0;right:0;background:#0d1231;flex-direction:column;gap:18px;padding:24px 30px 32px}
+  .site-header.is-open .site-drawer a{color:#fff;text-decoration:none}
 }
 </style>
+
 <header class="site-header" data-header>
   <div class="site-header__inner">
-    <a class="site-header__logo" href="/" aria-label="{{ nav.logoAlt }} — accueil"><img src="/assets/framerusercontent.com/images/Ona7maQllaRfuCPseOGU1X70s.png" alt="{{ nav.logoAlt }}"></a>
+    <a class="site-header__logo" href="/" aria-label="{{ nav.logoAlt }} – accueil"><img src="/assets/framerusercontent.com/images/Ona7maQllaRfuCPseOGU1X70s.png" alt="{{ nav.logoAlt }}"></a>
     <nav class="site-header__nav" aria-label="Navigation principale">
       {% for item in nav.links %}<a href="{{ item.url }}">{{ item.label }}</a>{% endfor %}
     </nav>
-    <a class="site-header__cta" href="{{ nav.ctaUrl }}">
-      <span class="site-header__cta-label">{{ nav.ctaLabel }}</span>
-      <span class="site-header__cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <a class="site-header__cta" href="{{ nav.ctaUrl }}">{{ nav.ctaLabel }}
+      <i class="ico"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
     </a>
-    <button class="site-header__burger" data-burger type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button>
+    <button class="site-header__burger" data-burger aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button>
   </div>
   <nav class="site-drawer" id="mobile-drawer" aria-label="Menu mobile">
     {% for item in nav.links %}<a href="{{ item.url }}">{{ item.label }}</a>{% endfor %}
     <a href="{{ nav.ctaUrl }}">{{ nav.ctaLabel }}</a>
   </nav>
 </header>
-<script data-site-header>
-(function () {
-  var h = document.querySelector('[data-header]');
-  if (!h) return;
-  var b = h.querySelector('[data-burger]');
-  function close() {
-    h.classList.remove('is-open');
-    if (b) { b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-label', 'Ouvrir le menu'); }
-  }
-  if (b) {
-    b.addEventListener('click', function () {
-      var open = h.classList.toggle('is-open');
-      b.setAttribute('aria-expanded', open ? 'true' : 'false');
-      b.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    });
-  }
-  h.querySelectorAll('.site-drawer a').forEach(function (a) {
-    a.addEventListener('click', close);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && h.classList.contains('is-open')) close();
-  });
-  function onScroll() {
-    h.classList.toggle('is-scrolled', window.scrollY > 40);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+
+<script>
+(function(){
+  var h=document.querySelector('[data-header]'),b=h&&h.querySelector('[data-burger]');
+  if(b)b.addEventListener('click',function(){var o=h.classList.toggle('is-open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu');});
+  if(h)h.querySelectorAll('.site-drawer a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('is-open');});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h)h.classList.remove('is-open');});
+  window.addEventListener('scroll',function(){if(h)h.classList.toggle('is-scrolled',scrollY>40);},{passive:true});
 })();
 </script>
