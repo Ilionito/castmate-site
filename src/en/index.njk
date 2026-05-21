@@ -387,6 +387,10 @@ a:hover .framer-1y6kmu5, [data-highlight="true"]:hover .framer-1y6kmu5 {
    sur tous les variants. La variante mobile Framer met object-fit:contain par
    défaut, ce qui laisse l'image en boîte aux lettres dans le cadre. */
 .framer-8ekuwz img { object-fit: cover !important; width: 100% !important; height: 100% !important; }
+/* Mobile : pousser le titre hero sous le header fixed 96 px. */
+@media (max-width: 860px) {
+  section.framer-1pwad70 h1 { margin-top: 25px !important; }
+}
 </style></head>
 <body>
 {% set lang = "en" %}
