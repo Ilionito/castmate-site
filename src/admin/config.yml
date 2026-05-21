@@ -256,6 +256,7 @@ collections:
             fields:
               - { name: endpoint, label: "Endpoint Formspree (URL POST)", widget: string }
               - { name: successRedirect, label: "Redirection après envoi (URL ou ancre)", widget: string }
+              - { name: successMessage, label: "Message de confirmation après envoi", widget: text }
               - { name: nameLabel, label: "Libellé champ Nom", widget: string }
               - { name: namePlaceholder, label: "Placeholder champ Nom", widget: string }
               - { name: emailLabel, label: "Libellé champ Email", widget: string }
@@ -292,6 +293,7 @@ collections:
             fields:
               - { name: endpoint, label: "Endpoint Formspree (URL POST)", widget: string }
               - { name: successRedirect, label: "Redirection après envoi (URL ou ancre)", widget: string }
+              - { name: successMessage, label: "Message de confirmation après envoi", widget: text }
               - { name: nameLabel, label: "Libellé champ Nom", widget: string }
               - { name: namePlaceholder, label: "Placeholder champ Nom", widget: string }
               - { name: emailLabel, label: "Libellé champ Email", widget: string }
