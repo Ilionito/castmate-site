@@ -5,13 +5,37 @@
   "ctaLabel": "Nous contacter",
   "ctaUrl": "/contact",
   "items": [
-    { "question": "Qu’est-ce que CastMate ?", "answer": "CastMate est une plateforme tout-en-un conçue pour centraliser et simplifier la gestion des castings audiovisuels, de la candidature à la sélection finale." },
-    { "question": "À qui s’adresse CastMate ?", "answer": "" },
-    { "question": "Faut-il des compétences techniques pour utiliser CastMate ?", "answer": "" },
-    { "question": "Où sont hébergées les données ?", "answer": "" },
-    { "question": "Peut-on travailler à plusieurs sur un même casting ?", "answer": "" },
-    { "question": "CastMate permet-il de gérer les auditions à distance ?", "answer": "" },
-    { "question": "Peut-on personnaliser les formulaires de candidature ?", "answer": "" },
-    { "question": "CastMate remplace-t-il plusieurs outils ?", "answer": "" }
+    {
+      "question": "Qu’est-ce que CastMate ?",
+      "answer": "CastMate est une plateforme tout-en-un conçue pour centraliser et simplifier la gestion des castings audiovisuels, de la candidature à la sélection finale."
+    },
+    {
+      "question": "À qui s’adresse CastMate ?",
+      "answer": "Castmate est conçu pour les équipes de production et les casteurs qui souhaitent organiser et optimiser leurs castings."
+    },
+    {
+      "question": "Faut-il des compétences techniques pour utiliser CastMate ?",
+      "answer": "Non, la plateforme est intuitive et pensée pour une prise en main rapide par les équipes."
+    },
+    {
+      "question": "Où sont hébergées les données ?",
+      "answer": "Les données sont hébergées en Europe, en France et en Allemagne, garantissant sécurité et conformité aux normes en vigueur."
+    },
+    {
+      "question": "Peut-on travailler à plusieurs sur un même casting ?",
+      "answer": "Oui. CastMate permet aux équipes de collaborer sur une même plateforme avec un accès partagé aux candidatures, évaluations, échanges et plannings."
+    },
+    {
+      "question": "CastMate permet-il de gérer les auditions à distance ?",
+      "answer": "Oui. CastMate intègre des fonctionnalités de visioconférence et de suivi des auditions directement depuis la plateforme."
+    },
+    {
+      "question": "Peut-on personnaliser les formulaires de candidature ?",
+      "answer": "Oui. Les formulaires et questionnaires peuvent être adaptés selon les besoins de chaque production et de chaque casting."
+    },
+    {
+      "question": "CastMate remplace-t-il plusieurs outils ?",
+      "answer": "Oui. CastMate centralise les candidatures, les échanges, les auditions, les plannings et le suivi des castings sur une seule plateforme."
+    }
   ]
 }
