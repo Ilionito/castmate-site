@@ -3,12 +3,23 @@
     "title": "Contact - CastMate",
     "description": "Contactez CastMate pour découvrir comment notre plateforme tout-en-un peut simplifier la gestion de vos castings."
   },
+  "hero": {
+    "title": "Nous contacter",
+    "subtitle": "Une question sur CastMate ?<br/><br/>Écrivez-nous, nous vous répondrons rapidement."
+  },
   "form": {
     "endpoint": "https://formspree.io/f/PLACEHOLDER",
-    "consentLabel": "J'accepte les conditions d'utilisation",
+    "nameLabel": "Nom Prénom",
     "namePlaceholder": "Nom Prénom",
+    "emailLabel": "Adresse mail",
     "emailPlaceholder": "Entrez votre mail",
+    "phoneLabel": "Numéro de téléphone",
     "phonePlaceholder": "Entrez votre téléphone",
-    "messagePlaceholder": "Ecrivez votre message ici"
+    "messageLabel": "Message",
+    "messagePlaceholder": "Ecrivez votre message ici",
+    "consentPrefix": "J'accepte les",
+    "consentLinkLabel": "conditions d'utilisation",
+    "consentLinkUrl": "/legal/conditions-utilisation",
+    "submitLabel": "Envoyer"
   }
 }

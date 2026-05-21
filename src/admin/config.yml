@@ -232,3 +232,73 @@ collections:
           - { name: siren, label: "SIREN", widget: string }
           - { name: rcs, label: "RCS", widget: string }
           - { name: copyright, label: "Mention copyright", widget: string }
+
+      # ---------- Page Contact ----------
+      - name: contact
+        label: "Page Contact"
+        file: "src/_data/contact.json"
+        fields:
+          - name: meta
+            label: "SEO / Métadonnées"
+            widget: object
+            fields:
+              - { name: title, label: "Titre de la page (onglet + Google)", widget: string }
+              - { name: description, label: "Meta description", widget: text }
+          - name: hero
+            label: "Bloc Hero"
+            widget: object
+            fields:
+              - { name: title, label: "Titre principal", widget: string }
+              - { name: subtitle, label: "Sous-titre (HTML autorisé, ex. <br/>)", widget: text }
+          - name: form
+            label: "Formulaire"
+            widget: object
+            fields:
+              - { name: endpoint, label: "Endpoint Formspree (URL POST)", widget: string }
+              - { name: nameLabel, label: "Libellé champ Nom", widget: string }
+              - { name: namePlaceholder, label: "Placeholder champ Nom", widget: string }
+              - { name: emailLabel, label: "Libellé champ Email", widget: string }
+              - { name: emailPlaceholder, label: "Placeholder champ Email", widget: string }
+              - { name: phoneLabel, label: "Libellé champ Téléphone", widget: string }
+              - { name: phonePlaceholder, label: "Placeholder champ Téléphone", widget: string }
+              - { name: messageLabel, label: "Libellé champ Message", widget: string }
+              - { name: messagePlaceholder, label: "Placeholder champ Message", widget: string }
+              - { name: consentPrefix, label: "Consentement — texte avant le lien", widget: string }
+              - { name: consentLinkLabel, label: "Consentement — libellé du lien", widget: string }
+              - { name: consentLinkUrl, label: "Consentement — URL du lien", widget: string }
+              - { name: submitLabel, label: "Bouton — libellé", widget: string }
+
+      # ---------- Page Démo ----------
+      - name: demo
+        label: "Page Démo"
+        file: "src/_data/demo.json"
+        fields:
+          - name: meta
+            label: "SEO / Métadonnées"
+            widget: object
+            fields:
+              - { name: title, label: "Titre de la page (onglet + Google)", widget: string }
+              - { name: description, label: "Meta description", widget: text }
+          - name: hero
+            label: "Bloc Hero"
+            widget: object
+            fields:
+              - { name: title, label: "Titre principal", widget: string }
+              - { name: subtitle, label: "Sous-titre (HTML autorisé, ex. <br/>)", widget: text }
+          - name: form
+            label: "Formulaire"
+            widget: object
+            fields:
+              - { name: endpoint, label: "Endpoint Formspree (URL POST)", widget: string }
+              - { name: nameLabel, label: "Libellé champ Nom", widget: string }
+              - { name: namePlaceholder, label: "Placeholder champ Nom", widget: string }
+              - { name: emailLabel, label: "Libellé champ Email", widget: string }
+              - { name: emailPlaceholder, label: "Placeholder champ Email", widget: string }
+              - { name: phoneLabel, label: "Libellé champ Téléphone", widget: string }
+              - { name: phonePlaceholder, label: "Placeholder champ Téléphone", widget: string }
+              - { name: messageLabel, label: "Libellé champ Message", widget: string }
+              - { name: messagePlaceholder, label: "Placeholder champ Message", widget: string }
+              - { name: consentPrefix, label: "Consentement — texte avant le lien", widget: string }
+              - { name: consentLinkLabel, label: "Consentement — libellé du lien", widget: string }
+              - { name: consentLinkUrl, label: "Consentement — URL du lien", widget: string }
+              - { name: submitLabel, label: "Bouton — libellé", widget: string }
