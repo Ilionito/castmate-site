@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "Démo - CastMate",
+    "description": "Demandez une démo de CastMate, la plateforme tout-en-un pour vos castings."
+  },
+  "form": {
+    "endpoint": "https://formspree.io/f/PLACEHOLDER",
+    "consentLabel": "J'accepte les conditions d'utilisation",
+    "namePlaceholder": "Nom Prénom",
+    "emailPlaceholder": "Entrez votre mail",
+    "phonePlaceholder": "Entrez votre téléphone",
+    "messagePlaceholder": "Décrivez votre besoin"
+  }
+}

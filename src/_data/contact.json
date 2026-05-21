@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "Contact - CastMate",
+    "description": "Contactez CastMate pour découvrir comment notre plateforme tout-en-un peut simplifier la gestion de vos castings."
+  },
+  "form": {
+    "endpoint": "https://formspree.io/f/PLACEHOLDER",
+    "consentLabel": "J'accepte les conditions d'utilisation",
+    "namePlaceholder": "Nom Prénom",
+    "emailPlaceholder": "Entrez votre mail",
+    "phonePlaceholder": "Entrez votre téléphone",
+    "messagePlaceholder": "Ecrivez votre message ici"
+  }
+}
