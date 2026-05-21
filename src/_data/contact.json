@@ -5,7 +5,7 @@
   },
   "hero": {
     "title": "Nous contacter",
-    "subtitle": "Une question sur CastMate ? Écrivez-nous, nous vous répondrons rapidement."
+    "subtitle": "Une question sur CastMate ?<br/>Écrivez-nous, nous vous répondrons rapidement."
   },
   "form": {
     "endpoint": "https://formspree.io/f/mdajgeva",
