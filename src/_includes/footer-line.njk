@@ -6,5 +6,10 @@ footer .framer-5tx4lp {
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   padding-top: 24px;
   margin-top: 24px;
+  /* Le wrapper hérite d'une animation d'entrée Framer (opacity:0;
+     translateY) qui ne se déclenche pas si l'IntersectionObserver
+     scroll-anim ne le voit pas franchir le seuil. On force visible. */
+  opacity: 1 !important;
+  transform: none !important;
 }
 </style>
