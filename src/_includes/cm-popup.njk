@@ -1,0 +1,55 @@
+<div class="cm-popup" id="cm-popup" hidden>
+  <div class="cm-popup__overlay" data-close></div>
+  <div class="cm-popup__card" role="dialog" aria-modal="true" aria-live="polite">
+    <div class="cm-popup__icon"></div>
+    <h3 class="cm-popup__title"></h3>
+    <p class="cm-popup__msg"></p>
+    <button type="button" class="cm-popup__btn" data-close>Fermer</button>
+  </div>
+</div>
+<style>
+.cm-popup[hidden]{display:none}
+.cm-popup{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px}
+.cm-popup__overlay{position:absolute;inset:0;background:rgba(8,17,49,.55);opacity:0;transition:opacity .2s}
+.cm-popup__card{position:relative;background:#fff;border-radius:16px;max-width:420px;width:100%;padding:36px 32px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.25);transform:translateY(8px) scale(.98);opacity:0;transition:transform .2s,opacity .2s}
+.cm-popup.is-open .cm-popup__overlay{opacity:1}
+.cm-popup.is-open .cm-popup__card{transform:none;opacity:1}
+.cm-popup__icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:28px;font-weight:700;color:#fff}
+.cm-popup__icon.is-ok{background:#1f9d63}.cm-popup__icon.is-err{background:#e0413b}
+.cm-popup__title{margin:0 0 8px;font-size:22px;color:#081131}
+.cm-popup__msg{margin:0 0 24px;font-size:15px;line-height:1.5;color:#5b6072}
+.cm-popup__btn{background:#081131;color:#fff;border:0;border-radius:10px;padding:12px 28px;font-size:15px;cursor:pointer}
+.cm-popup__btn:hover{opacity:.92}
+</style>
+<script>
+(function(){
+  var popup=document.getElementById('cm-popup'); if(!popup) return;
+  function open(type){
+    var ok=type==='success', icon=popup.querySelector('.cm-popup__icon');
+    icon.textContent=ok?'✓':'!'; icon.className='cm-popup__icon '+(ok?'is-ok':'is-err');
+    popup.querySelector('.cm-popup__title').textContent=ok?'Message envoyé':'Oups…';
+    popup.querySelector('.cm-popup__msg').textContent=ok
+      ?'Merci ! Votre message a bien été reçu, nous revenons vers vous très vite.'
+      :'Une erreur est survenue. Merci de réessayer dans un instant.';
+    popup.hidden=false; requestAnimationFrame(function(){popup.classList.add('is-open');});
+  }
+  function close(){popup.classList.remove('is-open');setTimeout(function(){popup.hidden=true;},200);}
+  popup.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!popup.hidden)close();});
+  document.querySelectorAll('form.js-resend-form').forEach(function(form){
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      var btn=form.querySelector('[type="submit"]'), label=btn?btn.textContent:'';
+      if(btn){btn.disabled=true;btn.textContent='Envoi…';}
+      var data=Object.fromEntries(new FormData(form).entries());
+      data._form=form.dataset.form||'contact';
+      try{
+        var res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+        if(!res.ok) throw 0;
+        form.reset(); open('success');
+      }catch(_){ open('error'); }
+      finally{ if(btn){btn.disabled=false;btn.textContent=label;} }
+    });
+  });
+})();
+</script>
