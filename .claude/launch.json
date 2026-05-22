@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start"],
       "port": 8080
+    },
+    {
+      "name": "castmate-redesign",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5173", "--directory", "castmate-redesign"],
+      "port": 5173
     }
   ]
 }

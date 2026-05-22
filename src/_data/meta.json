@@ -1,5 +1,16 @@
 {
+  "siteUrl": "https://castmate.fr",
+  "siteName": "CastMate",
+  "robots": "index, follow, max-image-preview:large",
   "title": "CastMate - Accélérez la recherche des meilleurs talents",
   "description": "La plateforme tout-en-un pour repérer, évaluer et sélectionner les talents qui feront la différence.",
-  "ogImage": "/assets/framerusercontent.com/assets/cWamKX3W1JUmEfsQxg5k0f6aJuE.png"
+  "ogImage": "/assets/framerusercontent.com/assets/cWamKX3W1JUmEfsQxg5k0f6aJuE.png",
+  "ogImageAlt": "",
+  "favicon": "/assets/framerusercontent.com/images/SNcovaDSya2glqZDbXj7LoxQZc8.png",
+  "appleTouchIcon": "/assets/framerusercontent.com/images/B7hW4a4IksNYjFHUZBTAWxtfNU.png",
+  "secondaryHeroBackground": "/assets/framerusercontent.com/images/VLvdl88gVFQl8UvszZepGlq4tA.png",
+  "secondaryHeroBackgroundAlt": "",
+  "secondaryHeroDecoration": "/assets/framerusercontent.com/images/QHlhPOoFYntFDEia6Kz3pPV0Zk.svg",
+  "legalOgImage": "/assets/framerusercontent.com/assets/5Ft0lrifxHjjrQQx2h8YqGvy3Y.png",
+  "legalOgImageAlt": ""
 }

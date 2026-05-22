@@ -1,7 +1,9 @@
 {
   "meta": {
     "title": "Démo - CastMate",
-    "description": "Demandez une démo de CastMate, la plateforme tout-en-un pour vos castings."
+    "description": "Demandez une démo de CastMate, la plateforme tout-en-un pour vos castings.",
+    "ogImage": "/assets/framerusercontent.com/assets/5Ft0lrifxHjjrQQx2h8YqGvy3Y.png",
+    "ogImageAlt": ""
   },
   "hero": {
     "title": "Demander une démo",
@@ -22,6 +24,8 @@
     "consentPrefix": "J'accepte les",
     "consentLinkLabel": "conditions d'utilisation",
     "consentLinkUrl": "/legal/conditions-utilisation",
-    "submitLabel": "Envoyer"
+    "submitLabel": "Envoyer",
+    "sideImage": "/assets/uploads/castmate-form-side.png",
+    "sideImageAlt": "CastMate"
   }
 }

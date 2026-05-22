@@ -25,19 +25,33 @@ collections:
     files:
 
       # ---------- SEO / Métadonnées ----------
+      # Sert à la fois pour la home FR et de fallback global pour les autres
+      # pages dont le champ SEO par page est laissé vide.
       - name: meta
-        label: "SEO / Métadonnées"
+        label: "Réglages SEO globaux + assets partagés (homepage + fallback)"
         file: "src/_data/meta.json"
         fields:
-          - { name: title, label: "Titre de la page (onglet + Google)", widget: string }
-          - { name: description, label: "Meta description", widget: text }
-          - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+          - { name: siteUrl, label: "URL canonique du site (sans slash final)", widget: string, default: "https://castmate.fr", hint: "Sert à construire canonical, og:url et les liens hreflang. Ex. https://castmate.fr" }
+          - { name: siteName, label: "Nom du site (og:site_name)", widget: string, default: "CastMate", hint: "Utilisé pour og:site_name. Visible sur les aperçus de partage." }
+          - { name: robots, label: "Directive robots par défaut", widget: string, default: "index, follow, max-image-preview:large", hint: "S'applique à toutes les pages qui n'ont pas de directive robots spécifique." }
+          - { name: title, label: "SEO Title", widget: string, hint: "~60 caractères max. Utilisé sur la home et comme fallback global." }
+          - { name: description, label: "SEO Description", widget: text, hint: "~155 caractères max. Utilisé sur la home et comme fallback global." }
+          - { name: ogImage, label: "Image de partage — Home (réseaux sociaux)", widget: image, required: false, hint: "1200×630 recommandé." }
+          - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - { name: favicon, label: "Favicon", widget: image, required: false, hint: "PNG carré, 512×512 recommandé." }
+          - { name: appleTouchIcon, label: "Apple touch icon (iOS)", widget: image, required: false, hint: "PNG carré, 180×180." }
+          - { name: secondaryHeroBackground, label: "Pages secondaires — image de fond du hero", widget: image, required: false, hint: "Utilisée par Contact, Démo et les pages légales. 1920×1200 recommandé." }
+          - { name: secondaryHeroBackgroundAlt, label: "Pages secondaires — alt du fond du hero", widget: string, required: false }
+          - { name: secondaryHeroDecoration, label: "Pages secondaires — forme décorative (SVG)", widget: image, required: false, hint: "SVG décoratif placé derrière le hero." }
+          - { name: legalOgImage, label: "Image de partage — Pages légales", widget: image, required: false, hint: "Image utilisée pour le partage des 4 pages légales." }
+          - { name: legalOgImageAlt, label: "Image de partage légales — texte alternatif", widget: string, required: false }
 
       # ---------- Navigation (header) ----------
       - name: nav
         label: "Navigation (header)"
         file: "src/_data/nav.json"
         fields:
+          - { name: logo, label: "Logo (header + footer)", widget: image, required: false, hint: "PNG transparent. Réutilisé pour le header et le pied de page sur toutes les pages." }
           - { name: logoAlt, label: "Texte alternatif du logo", widget: string }
           - name: links
             label: "Liens du menu"
@@ -147,6 +161,8 @@ collections:
               - { name: text, label: "Description", widget: text }
               - { name: image, label: "Image", widget: image }
           - { name: video, label: "Vidéo (.mp4)", widget: file, required: false }
+          - { name: videoPoster, label: "Vidéo — image affichée avant lecture (poster)", widget: image, required: false, hint: "1074×1074 recommandé." }
+          - { name: videoPosterAlt, label: "Vidéo — alt du poster", widget: string, required: false }
 
       # ---------- CTA équipe ----------
       - name: teamCta
@@ -241,8 +257,11 @@ collections:
             label: "SEO / Métadonnées"
             widget: object
             fields:
-              - { name: title, label: "Titre de la page (onglet + Google)", widget: string }
-              - { name: description, label: "Meta description", widget: text }
+              - { name: title, label: "SEO Title", widget: string, required: false, hint: "~60 caractères max. Laisser vide pour utiliser le réglage SEO global." }
+              - { name: description, label: "SEO Description", widget: text, required: false, hint: "~155 caractères max. Laisser vide pour utiliser le réglage SEO global." }
+              - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+              - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false, hint: "1200×630 recommandé. Utilisée par les balises og:image et twitter:image." }
+              - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
           - name: hero
             label: "Bloc Hero"
             widget: object
@@ -268,6 +287,8 @@ collections:
               - { name: consentLinkLabel, label: "Consentement — libellé du lien", widget: string }
               - { name: consentLinkUrl, label: "Consentement — URL du lien", widget: string }
               - { name: submitLabel, label: "Bouton — libellé", widget: string }
+              - { name: sideImage, label: "Image latérale du formulaire", widget: image, required: false, hint: "Affichée à côté du formulaire (desktop). Format vertical recommandé." }
+              - { name: sideImageAlt, label: "Image latérale — texte alternatif", widget: string, required: false }
 
       # ---------- Page Démo ----------
       - name: demo
@@ -278,8 +299,11 @@ collections:
             label: "SEO / Métadonnées"
             widget: object
             fields:
-              - { name: title, label: "Titre de la page (onglet + Google)", widget: string }
-              - { name: description, label: "Meta description", widget: text }
+              - { name: title, label: "SEO Title", widget: string, required: false, hint: "~60 caractères max. Laisser vide pour utiliser le réglage SEO global." }
+              - { name: description, label: "SEO Description", widget: text, required: false, hint: "~155 caractères max. Laisser vide pour utiliser le réglage SEO global." }
+              - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+              - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false, hint: "1200×630 recommandé. Utilisée par les balises og:image et twitter:image." }
+              - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
           - name: hero
             label: "Bloc Hero"
             widget: object
@@ -305,3 +329,168 @@ collections:
               - { name: consentLinkLabel, label: "Consentement — libellé du lien", widget: string }
               - { name: consentLinkUrl, label: "Consentement — URL du lien", widget: string }
               - { name: submitLabel, label: "Bouton — libellé", widget: string }
+              - { name: sideImage, label: "Image latérale du formulaire", widget: image, required: false, hint: "Affichée à côté du formulaire (desktop). Format vertical recommandé." }
+              - { name: sideImageAlt, label: "Image latérale — texte alternatif", widget: string, required: false }
+
+      # ---------- Version anglaise (EN) ----------
+      # Une seule entrée éditable qui regroupe les SEO meta de la home EN,
+      # de /en/contact et de /en/demo. Les champs SEO seulement sont exposés
+      # ici ; les contenus EN (hero, steps, etc.) restent dans _data/en.json
+      # mais ne sont pas remontés dans le CMS pour l'instant.
+      - name: en
+        label: "Pages EN — SEO / Métadonnées"
+        file: "src/_data/en.json"
+        fields:
+          - name: meta
+            label: "Home EN — SEO"
+            widget: object
+            fields:
+              - { name: title, label: "SEO Title", widget: string, required: false, hint: "~60 caractères max. Laisser vide pour utiliser le SEO global FR." }
+              - { name: description, label: "SEO Description", widget: text, required: false, hint: "~155 caractères max. Laisser vide pour utiliser le SEO global FR." }
+              - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+              - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false, hint: "1200×630 recommandé." }
+              - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - name: contact
+            label: "Contact EN"
+            widget: object
+            fields:
+              - name: meta
+                label: "SEO / Métadonnées"
+                widget: object
+                fields:
+                  - { name: title, label: "SEO Title", widget: string, required: false, hint: "~60 caractères max. Laisser vide pour utiliser le SEO de la home EN." }
+                  - { name: description, label: "SEO Description", widget: text, required: false, hint: "~155 caractères max. Laisser vide pour utiliser le SEO de la home EN." }
+                  - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+                  - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false, hint: "1200×630 recommandé." }
+                  - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - name: demo
+            label: "Démo EN"
+            widget: object
+            fields:
+              - name: meta
+                label: "SEO / Métadonnées"
+                widget: object
+                fields:
+                  - { name: title, label: "SEO Title", widget: string, required: false, hint: "~60 caractères max. Laisser vide pour utiliser le SEO de la home EN." }
+                  - { name: description, label: "SEO Description", widget: text, required: false, hint: "~155 caractères max. Laisser vide pour utiliser le SEO de la home EN." }
+                  - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+                  - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false, hint: "1200×630 recommandé." }
+                  - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - name: legal
+            label: "Pages légales EN — SEO"
+            widget: object
+            fields:
+              - name: mentionsLegales
+                label: "Legal notice — SEO"
+                widget: object
+                fields:
+                  - name: meta
+                    label: "SEO / Métadonnées"
+                    widget: object
+                    fields:
+                      - { name: title, label: "SEO Title", widget: string, required: false, hint: "Laisser vide pour utiliser la valeur FR." }
+                      - { name: description, label: "SEO Description", widget: text, required: false, hint: "Laisser vide pour utiliser la valeur FR." }
+                      - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false }
+                      - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                      - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+              - name: engagements
+                label: "Our commitments — SEO"
+                widget: object
+                fields:
+                  - name: meta
+                    label: "SEO / Métadonnées"
+                    widget: object
+                    fields:
+                      - { name: title, label: "SEO Title", widget: string, required: false }
+                      - { name: description, label: "SEO Description", widget: text, required: false }
+                      - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false }
+                      - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                      - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+              - name: protectionDonnees
+                label: "Data protection policy — SEO"
+                widget: object
+                fields:
+                  - name: meta
+                    label: "SEO / Métadonnées"
+                    widget: object
+                    fields:
+                      - { name: title, label: "SEO Title", widget: string, required: false }
+                      - { name: description, label: "SEO Description", widget: text, required: false }
+                      - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false }
+                      - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                      - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+              - name: conditionsUtilisation
+                label: "Terms of use — SEO"
+                widget: object
+                fields:
+                  - name: meta
+                    label: "SEO / Métadonnées"
+                    widget: object
+                    fields:
+                      - { name: title, label: "SEO Title", widget: string, required: false }
+                      - { name: description, label: "SEO Description", widget: text, required: false }
+                      - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false }
+                      - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                      - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+
+      # ---------- Pages légales FR ----------
+      # Une seule entrée éditable qui regroupe les SEO meta des 4 pages
+      # légales FR (mentions, engagements, protection des données, CGU).
+      # Image et alt OG sont optionnels : si vides, on retombe sur
+      # meta.legalOgImage / meta.legalOgImageAlt (réglages globaux).
+      - name: legal
+        label: "Pages légales (FR) — SEO / Métadonnées"
+        file: "src/_data/legal.json"
+        fields:
+          - name: mentionsLegales
+            label: "Mentions légales"
+            widget: object
+            fields:
+              - name: meta
+                label: "SEO / Métadonnées"
+                widget: object
+                fields:
+                  - { name: title, label: "SEO Title", widget: string, required: false, hint: "~60 caractères max. Laisser vide pour utiliser le SEO global." }
+                  - { name: description, label: "SEO Description", widget: text, required: false, hint: "~155 caractères max." }
+                  - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+                  - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false, hint: "1200×630. Laisser vide pour utiliser l'image légale globale." }
+                  - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - name: engagements
+            label: "Nos engagements"
+            widget: object
+            fields:
+              - name: meta
+                label: "SEO / Métadonnées"
+                widget: object
+                fields:
+                  - { name: title, label: "SEO Title", widget: string, required: false }
+                  - { name: description, label: "SEO Description", widget: text, required: false }
+                  - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+                  - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                  - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - name: protectionDonnees
+            label: "Politique de protection des données"
+            widget: object
+            fields:
+              - name: meta
+                label: "SEO / Métadonnées"
+                widget: object
+                fields:
+                  - { name: title, label: "SEO Title", widget: string, required: false }
+                  - { name: description, label: "SEO Description", widget: text, required: false }
+                  - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+                  - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                  - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }
+          - name: conditionsUtilisation
+            label: "Conditions d'utilisation"
+            widget: object
+            fields:
+              - name: meta
+                label: "SEO / Métadonnées"
+                widget: object
+                fields:
+                  - { name: title, label: "SEO Title", widget: string, required: false }
+                  - { name: description, label: "SEO Description", widget: text, required: false }
+                  - { name: robots, label: "Directive robots (optionnel)", widget: string, required: false, hint: "Laisser vide pour utiliser la directive globale. Ex. \"noindex, nofollow\" pour exclure cette page." }
+                  - { name: ogImage, label: "Image de partage (réseaux sociaux)", widget: image, required: false }
+                  - { name: ogImageAlt, label: "Image de partage — texte alternatif", widget: string, required: false }

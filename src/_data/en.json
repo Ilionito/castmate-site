@@ -106,7 +106,7 @@
   },
   "footer": {
     "tagline": "The all-in-one platform for your castings.",
-    "linkedinUrl": "https://linkedin.com",
+    "linkedinUrl": "https://www.linkedin.com/company/castmate-1/",
     "ctaLabel": "Request a demo",
     "ctaUrl": "/en/demo",
     "legalLinks": [
@@ -147,6 +147,40 @@
       "consentLinkLabel": "terms of use",
       "consentLinkUrl": "/en/legal/conditions-utilisation",
       "submitLabel": "Send"
+    }
+  },
+  "legal": {
+    "mentionsLegales": {
+      "meta": {
+        "title": "Mentions légales - Castmate",
+        "description": "Informations légales et politiques applicables au site CastMate.",
+        "ogImage": "",
+        "ogImageAlt": ""
+      }
+    },
+    "engagements": {
+      "meta": {
+        "title": "Nos engagements - Castmate",
+        "description": "Informations légales et politiques applicables au site CastMate.",
+        "ogImage": "",
+        "ogImageAlt": ""
+      }
+    },
+    "protectionDonnees": {
+      "meta": {
+        "title": "Politique de protection des données - Castmate",
+        "description": "Informations légales et politiques applicables au site CastMate.",
+        "ogImage": "",
+        "ogImageAlt": ""
+      }
+    },
+    "conditionsUtilisation": {
+      "meta": {
+        "title": "Conditions d’utilisation - Castmate",
+        "description": "Informations légales et politiques applicables au site CastMate.",
+        "ogImage": "",
+        "ogImageAlt": ""
+      }
     }
   },
   "demo": {

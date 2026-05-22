@@ -1,0 +1,34 @@
+{
+  "mentionsLegales": {
+    "meta": {
+      "title": "Mentions légales - Castmate",
+      "description": "Informations légales et politiques applicables au site CastMate.",
+      "ogImage": "",
+      "ogImageAlt": ""
+    }
+  },
+  "engagements": {
+    "meta": {
+      "title": "Nos engagements - Castmate",
+      "description": "Informations légales et politiques applicables au site CastMate.",
+      "ogImage": "",
+      "ogImageAlt": ""
+    }
+  },
+  "protectionDonnees": {
+    "meta": {
+      "title": "Politique de protection des données - Castmate",
+      "description": "Informations légales et politiques applicables au site CastMate.",
+      "ogImage": "",
+      "ogImageAlt": ""
+    }
+  },
+  "conditionsUtilisation": {
+    "meta": {
+      "title": "Conditions d’utilisation - Castmate",
+      "description": "Informations légales et politiques applicables au site CastMate.",
+      "ogImage": "",
+      "ogImageAlt": ""
+    }
+  }
+}

@@ -36,7 +36,7 @@
 {% set _enUrl = _isEn and page.url or ("/en" + page.url) %}
 <header class="site-header" data-header>
   <div class="site-header__inner">
-    <a class="site-header__logo" href="{% if _isEn %}/en/{% else %}/{% endif %}" aria-label="{{ nav.logoAlt }}"><img src="/assets/framerusercontent.com/images/Ona7maQllaRfuCPseOGU1X70s.png" alt="{{ nav.logoAlt }}"></a>
+    <a class="site-header__logo" href="{% if _isEn %}/en/{% else %}/{% endif %}" aria-label="{{ nav.logoAlt }}"><img src="{{ nav.logo or '/assets/framerusercontent.com/images/Ona7maQllaRfuCPseOGU1X70s.png' }}" alt="{{ nav.logoAlt }}"></a>
     <nav class="site-header__nav" aria-label="Navigation principale">
       {% for item in nav.links %}<a href="{{ item.url }}">{{ item.label }}</a>{% endfor %}
       <span class="site-header__lang" role="group" aria-label="Language">

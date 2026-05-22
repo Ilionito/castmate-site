@@ -1,7 +1,9 @@
 {
   "meta": {
     "title": "Contact - CastMate",
-    "description": "Contactez CastMate pour découvrir comment notre plateforme tout-en-un peut simplifier la gestion de vos castings."
+    "description": "Contactez CastMate pour découvrir comment notre plateforme tout-en-un peut simplifier la gestion de vos castings.",
+    "ogImage": "/assets/framerusercontent.com/assets/5Ft0lrifxHjjrQQx2h8YqGvy3Y.png",
+    "ogImageAlt": ""
   },
   "hero": {
     "title": "Nous contacter",
@@ -22,6 +24,8 @@
     "consentPrefix": "J'accepte les",
     "consentLinkLabel": "conditions d'utilisation",
     "consentLinkUrl": "/legal/conditions-utilisation",
-    "submitLabel": "Envoyer"
+    "submitLabel": "Envoyer",
+    "sideImage": "/assets/uploads/castmate-form-side.png",
+    "sideImageAlt": "CastMate"
   }
 }
