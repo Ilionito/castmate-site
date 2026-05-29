@@ -7,9 +7,12 @@
     "build": "eleventy",
     "start": "eleventy --serve",
     "dev": "eleventy --serve",
-    "clean": "node -e \"require('fs').rmSync('_site', { recursive: true, force: true })\""
+    "clean": "node -e \"require('fs').rmSync('_site', { recursive: true, force: true })\"",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "wrangler": "^4.95.0"
   }
 }
