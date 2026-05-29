@@ -1,6 +1,6 @@
 // api/contact.js — fonction serverless Vercel (Node 18+)
 const TO = ['jfboyer@bvtech.fr', 'hillion.joris00@gmail.com'];
-const FROM = 'CastMate <contact@send.castmate.fr>'; // domaine à vérifier dans Resend
+const FROM = 'CastMate <form@website.castmate.fr>'; // domaine vérifié dans Resend
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ ok: false });
