@@ -130,7 +130,7 @@
     },
     "hero": {
       "title": "Contact us",
-      "subtitle": "Got a question about CastMate?<br/>Write to us, we'll get back to you quickly."
+      "subtitle": "Got a question about CastMate?<br/>Write to us, we'll get back to you quickly.<span style=\"display:block;max-width:640px;margin:1.75rem auto 0;padding:1rem 1.25rem;background:#FFFCF5;border-radius:12px;color:#1B1916;font-size:1.05rem;line-height:1.55;font-weight:500;text-align:center;box-shadow:0 6px 22px rgba(0,0,0,0.22)\">Many production and broadcast companies use CastMate. For any questions regarding castings, please contact them directly.</span>"
     },
     "form": {
       "endpoint": "https://formspree.io/f/mdajgeva",

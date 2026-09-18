@@ -8,11 +8,15 @@
 	
 	
 	<!-- Start of headStart -->
-    
+    <style>
+      /* Masque le motif decoratif (petites marques) du hero secondaire */
+      img[src*="QHlhPOoFYntFDEia6Kz3pPV0Zk"],
+      img[srcset*="QHlhPOoFYntFDEia6Kz3pPV0Zk"] { display: none !important; }
+    </style>
     <!-- End of headStart -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ en.contact.meta.title or en.meta.title }}</title>
-    <meta name="description" content="{{ en.contact.meta.description or en.meta.description }}">
+    <meta name="description" content="{{ en.contact.meta.description or en.meta.description }}">
     <link href="{{ meta.favicon or '/assets/framerusercontent.com/images/SNcovaDSya2glqZDbXj7LoxQZc8.png' }}" rel="icon" media="(prefers-color-scheme: light)">
     <link href="{{ meta.favicon or '/assets/framerusercontent.com/images/SNcovaDSya2glqZDbXj7LoxQZc8.png' }}" rel="icon" media="(prefers-color-scheme: dark)">
     <link rel="apple-touch-icon" href="{{ meta.appleTouchIcon or '/assets/framerusercontent.com/images/B7hW4a4IksNYjFHUZBTAWxtfNU.png' }}">
