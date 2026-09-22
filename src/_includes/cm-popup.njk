@@ -11,46 +11,115 @@
 .cm-popup[hidden]{display:none}
 .cm-popup{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px}
 .cm-popup__overlay{position:absolute;inset:0;background:rgba(8,17,49,.55);opacity:0;transition:opacity .2s}
-.cm-popup__card{position:relative;background:#fff;border-radius:16px;max-width:420px;width:100%;padding:36px 32px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.25);transform:translateY(8px) scale(.98);opacity:0;transition:transform .2s,opacity .2s}
+.cm-popup__card{position:relative;background:#fff;border-radius:16px;max-width:440px;width:100%;padding:36px 32px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.25);transform:translateY(8px) scale(.98);opacity:0;transition:transform .2s,opacity .2s}
 .cm-popup.is-open .cm-popup__overlay{opacity:1}
 .cm-popup.is-open .cm-popup__card{transform:none;opacity:1}
 .cm-popup__icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:28px;font-weight:700;color:#fff}
-.cm-popup__icon.is-ok{background:#1f9d63}.cm-popup__icon.is-err{background:#e0413b}
+.cm-popup__icon.is-ok{background:#1f9d63}.cm-popup__icon.is-err{background:#e0413b}.cm-popup__icon.is-info{background:#081131}
 .cm-popup__title{margin:0 0 8px;font-size:22px;color:#081131}
-.cm-popup__msg{margin:0 0 24px;font-size:15px;line-height:1.5;color:#5b6072}
+.cm-popup__msg{margin:0 0 24px;font-size:15px;line-height:1.55;color:#5b6072}
 .cm-popup__btn{background:#081131;color:#fff;border:0;border-radius:10px;padding:12px 28px;font-size:15px;cursor:pointer}
 .cm-popup__btn:hover{opacity:.92}
 </style>
 <script>
 (function(){
   var popup=document.getElementById('cm-popup'); if(!popup) return;
-  function open(type){
-    var ok=type==='success', icon=popup.querySelector('.cm-popup__icon');
-    icon.textContent=ok?'✓':'!'; icon.className='cm-popup__icon '+(ok?'is-ok':'is-err');
-    popup.querySelector('.cm-popup__title').textContent=ok?'Message envoyé':'Oups…';
-    var msgEl=popup.querySelector('.cm-popup__msg');
-    if(ok){
-      msgEl.textContent='Merci ! Votre message a bien été reçu, nous revenons vers vous très vite.';
-    } else {
-      msgEl.innerHTML='Une erreur est survenue. Merci de réessayer dans un instant, ou contactez-nous directement à <a href="mailto:contact@castmate.fr" style="color:#081131;font-weight:500;text-decoration:underline">contact@castmate.fr</a>.';
-    }
+  var isEN=(document.documentElement.lang||'fr').toLowerCase().indexOf('en')===0;
+
+  var iconEl=popup.querySelector('.cm-popup__icon');
+  var titleEl=popup.querySelector('.cm-popup__title');
+  var msgEl=popup.querySelector('.cm-popup__msg');
+  var btnEl=popup.querySelector('.cm-popup__btn');
+
+  function render(kind, title, html, btn){
+    iconEl.className='cm-popup__icon '+kind;
+    iconEl.textContent=(kind==='is-ok')?'✓':(kind==='is-info')?'i':'!';
+    titleEl.textContent=title;
+    msgEl.innerHTML=html;
+    btnEl.textContent=btn;
     popup.hidden=false; requestAnimationFrame(function(){popup.classList.add('is-open');});
   }
   function close(){popup.classList.remove('is-open');setTimeout(function(){popup.hidden=true;},200);}
   popup.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',close);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!popup.hidden)close();});
+
+  function openStatus(type){
+    var ok=type==='success';
+    if(ok){
+      render('is-ok', isEN?'Message sent':'Message envoyé',
+        isEN?'Thank you! Your message has been received, we’ll get back to you very soon.'
+            :'Merci ! Votre message a bien été reçu, nous revenons vers vous très vite.',
+        isEN?'Close':'Fermer');
+    } else {
+      render('is-err', isEN?'Oops…':'Oups…',
+        (isEN?'Something went wrong. Please try again in a moment, or email us directly at '
+             :'Une erreur est survenue. Merci de réessayer dans un instant, ou contactez-nous directement à ')
+        +'<a href="mailto:contact@bvtech.fr" style="color:#081131;font-weight:500;text-decoration:underline">contact@bvtech.fr</a>.',
+        isEN?'Close':'Fermer');
+    }
+  }
+
+  // --- Garde-fou : demandes liées aux castings d'émissions TV -----------
+  // CastMate est un outil pro pour les directeurs de casting : il ne gère
+  // pas les inscriptions/présélections des émissions de télévision. Quand
+  // un visiteur écrit ce type de message, on l'informe et on bloque l'envoi.
+  function norm(s){return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
+  // Mots forts : un seul suffit.
+  var STRONG=['emission','preselection','tele-crochet','telecrochet',
+    'passer le casting','passe le casting','passer un casting','passe un casting','repasser le casting','refaire le casting','repasser un casting',
+    'inscription au casting','mon inscription','suis inscri','me suis inscri','inscrit au casting','inscrite au casting','inscription a la preselection',
+    'participer a l\'emission','participer a l emission','participer au jeu','passage a l\'emission','jour du casting','date du casting','lieu du casting','convocation',
+    'tout le monde veut prendre sa place','koh-lanta','koh lanta','star academy','the voice','n\'oubliez pas les paroles','les 12 coups','12 coups de midi','questions pour un champion','un diner presque parfait','pekin express','boccolini','nagui'];
+  // Mots moyens : il en faut au moins deux (evite les faux positifs pros).
+  // On exclut volontairement les termes ambigus avec l'usage pro : "casting"
+  // et "audition" (coeur de metier des directeurs de casting), ainsi que
+  // "selectionne" (verbe selectionner) et "creneau" (creneau de demo).
+  var MEDIUM=['candidature','jeu televise','plateau','tournage'];
+  function looksLikeTvCasting(text){
+    var t=norm(text);
+    if(t.length<3) return false;
+    for(var i=0;i<STRONG.length;i++){ if(t.indexOf(norm(STRONG[i]))!==-1) return true; }
+    var c=0; for(var j=0;j<MEDIUM.length;j++){ if(t.indexOf(norm(MEDIUM[j]))!==-1) c++; }
+    return c>=2;
+  }
+  function showCastingNotice(){
+    render('is-info',
+      isEN?'Signing up for a TV show?':'Inscription à une émission TV ?',
+      isEN?'CastMate is a professional tool for casting directors. <strong>We do not manage registrations, pre-selections or auditions for television programmes.</strong><br><br>For any question about your participation, your registration or your audition, please contact the production company or the channel directly. We’re unable to follow up on this type of request.'
+          :'CastMate est un outil professionnel destiné aux directrices et directeurs de casting. <strong>Nous ne gérons pas les inscriptions, les présélections ni les castings des émissions de télévision.</strong><br><br>Pour toute question concernant votre participation, votre inscription ou votre passage, merci de contacter directement la société de production ou la chaîne concernée. Nous ne pourrons pas donner suite à ce type de demande.',
+      isEN?'Got it':'J\'ai compris');
+  }
+
   document.querySelectorAll('form.js-resend-form').forEach(function(form){
+    var msgField=form.querySelector('textarea[name="message"], input[name="message"]');
+    var acknowledged=false;
+    // Avertissement en direct (une fois) quand le message ressemble a une demande TV.
+    if(msgField){
+      var warned=false, tmr;
+      function check(){
+        if(looksLikeTvCasting(msgField.value)){ if(!warned){warned=true; showCastingNotice();} }
+        else { warned=false; }
+      }
+      msgField.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(check,500);});
+      msgField.addEventListener('blur',check);
+    }
     form.addEventListener('submit',async function(e){
+      // Demande liee a un casting d'emission TV : on informe et on stoppe le
+      // premier envoi. Si la personne renvoie malgre tout, on laisse passer
+      // (aucun client legitime faussement detecte n'est bloque durablement).
+      if(msgField && !acknowledged && looksLikeTvCasting(msgField.value)){
+        e.preventDefault(); acknowledged=true; showCastingNotice(); return;
+      }
       e.preventDefault();
       var btn=form.querySelector('[type="submit"]'), label=btn?btn.textContent:'';
-      if(btn){btn.disabled=true;btn.textContent='Envoi…';}
+      if(btn){btn.disabled=true;btn.textContent=isEN?'Sending…':'Envoi…';}
       var data=Object.fromEntries(new FormData(form).entries());
       data._form=form.dataset.form||'contact';
       try{
         var res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
         if(!res.ok) throw 0;
-        form.reset(); open('success');
-      }catch(_){ open('error'); }
+        form.reset(); openStatus('success');
+      }catch(_){ openStatus('error'); }
       finally{ if(btn){btn.disabled=false;btn.textContent=label;} }
     });
   });
